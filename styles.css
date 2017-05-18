@@ -90,6 +90,7 @@ body {
 }
 
 .roleTitleHeading {
+	margin-top: 0px;
 	margin-bottom: 10px;
 }
 
@@ -98,6 +99,12 @@ body {
 	color: #333;
 	margin: 10 0px;
 	margin-bottom: 10px;
+}
+.filterPanel select {
+	margin-top: 5px;
+	width: 100%;
+	height: 30px;
+	font-size: 14px;
 }
 
 .rightColumn {
@@ -110,6 +117,7 @@ body {
 	height: 100%;
 	width: 300px;
 	margin-right: 15px;
+	padding: 15px;
 }
 
 ul {
