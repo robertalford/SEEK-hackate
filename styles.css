@@ -184,7 +184,7 @@ i {
 	color: #333;
 	margin: 10 0px;
 	margin-bottom: 10px;
-	height: 300px;
+	padding: 1px 20px;
 }
 .filterPanel select {
 	margin-top: 5px;
@@ -261,8 +261,3 @@ li.menulink:hover {
         padding: 10 80 20 80;
     }
 }
-
-.bar { fill: #0d3880; }
-.bar:hover {  fill: brown; }
-.axis--x path {  display: none; }
-
