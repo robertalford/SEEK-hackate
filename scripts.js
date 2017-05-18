@@ -11,7 +11,10 @@ require(['knockout'], function (ko) {
 		viewModel: { require: 'pages/mydata/mydata' },
 		template: { require: 'text!pages/mydata/mydata.html' }
 	});
+
+	ko.components.register('chart', {
+		template: { require: 'text!pages/mydata/chart.html' }
+	});
 	
 	ko.applyBindings();
-
 });
