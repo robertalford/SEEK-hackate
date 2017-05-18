@@ -2,12 +2,7 @@
 
 <h1 data-bind="text: filterPanel.selectedRole() || 'All Roles'"></h1>
 
-<!-- Container -->
-<div class="pageContainer">
-
 		<!-- Role stats -->
-
-
         <div id="dashboard" class="roleStats">
             <div id="dashboard-box1" class="dashboard-box roleStat">
 	        	<div class="dashboard-heading">
@@ -25,12 +20,16 @@
 	        		<div>
 	        			RATING
 	        		</div>
+	        		<div class="dashboard-content">
+	        			<div>ANZ: 3.2</div>
+	        			<div>Competitors: 3.4</div>
+	        		</div>
 	        	</div>
             </div>
             <div id="dashboard-box3" class="dashboard-box roleStat">
 	        	<div class="dashboard-heading">
 	        		<div>
-	        			POPULAR ROLES
+	        			TOP REVIEWERS
 	        		</div>
 	        	</div>
             </div>
@@ -44,6 +43,8 @@
         </div>
     </div>
 
+<!-- Container -->
+<div class="pageContainer">
 
 	<!-- Filter Panel -->
 	<div class="filterPanel">
