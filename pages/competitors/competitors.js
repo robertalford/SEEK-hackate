@@ -78,7 +78,6 @@ define(['knockout', 'data/data'], function (ko, data) {
         });
 
 
-
         this.averageAllCompanyScore = ko.computed(() =>{
         	if (!this.filterPanel.selectedCompanyName()) {
                 return [];
@@ -135,5 +134,6 @@ define(['knockout', 'data/data'], function (ko, data) {
             }
             return curSum / objectArray.length;
         }
+
     }
 });
