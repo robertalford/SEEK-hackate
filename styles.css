@@ -56,6 +56,27 @@ body {
 	margin-bottom: 10px;
 	flex: 1;
 	margin: 0 10px;
+	height: 100px;
+   	align-items: center;
+   	justify-content: center;
+}
+
+.reviewHeading{
+	font-size: 18px;
+	margin-bottom: 8px;
+}
+
+i {
+	color: #ffc600;
+}
+
+.reviewSubContainer {
+	display: flex;
+	flex-direction: row;
+}
+
+.reviewSubBox {
+	flex: 1;
 }
 
 .menu {
@@ -101,6 +122,7 @@ body {
 	color: #333;
 	margin: 10 0px;
 	margin-bottom: 10px;
+	height: 300px;
 }
 .filterPanel select {
 	margin-top: 5px;

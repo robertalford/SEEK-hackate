@@ -32,10 +32,68 @@
 		<h2>Reviews</h2>
 		<div data-bind="foreach: mydataFiltered">
 			<div class="reviewCard">
-				<span data-bind="text: CompanyName"></span><br>
-				<span data-bind="text: Role"></span><br><br>
-				Pros: <span data-bind="text: Pros"></span><br><Br>
-				Cons: <span data-bind="text: Cons"></span><br><Br>
+				<div class="reviewHeading"><span data-bind="text: Role"></span> at <span data-bind="text: CompanyName"></span></div>
+
+				<div class="reviewSubContainer">
+					<div class="reviewSubBox">
+						<b>Overall:</b> 
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i><br><br>
+						<b>Recommened:</b> <span data-bind="text: Recommended"></span><br><br>
+						<b>Summary:</b><br><span data-bind="text: ExperienceSummary"></span>
+
+					</div>
+					<div class="reviewSubBox">
+						<b>Pros:</b><br><span data-bind="text: Pros"></span><br><br>
+						<b>Cons:</b><br><span data-bind="text: Cons"></span><br>
+					</div>	
+					<div style="flex: 2" class="reviewSubBox">
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<b>Salary Rating:</b> <span data-bind="text: SalaryRating"></span><br>
+						
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<b>Career Development Opportunities:</b> <span data-bind="text: CareerDevOpp"></span><br>
+						
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<b>Worklife Balance:</b> <span data-bind="text: WorklifeBal"></span><br>
+						
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<b>Management:</b> <span data-bind="text: Management"></span><br>
+						
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<b>Benefits & Perks:</b> <span data-bind="text: Benefits"></span><br>
+						
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<b>Diversity:</b> <span data-bind="text: Diversity"></span><br>
+					</div>
+				</div>
 			</div>
 		</div>
 
