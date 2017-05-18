@@ -37,6 +37,7 @@ body {
 	font-size: 1rem;
 	background-color: #0d3880;
 	text-align: center;
+	box-sizing: border-box;
 }
 
 .content {
@@ -66,6 +67,7 @@ body {
 	padding: 10 20 15 20;
 	display: flex;
 	flex-wrap: wrap;
+	box-sizing: border-box;	
 }
 
 .centered {
