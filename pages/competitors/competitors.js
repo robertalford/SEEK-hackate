@@ -56,6 +56,16 @@ define(['knockout', 'data/data'], function (ko, data) {
             return this.mydata().filter(r => r.RoleFamily === this.filterPanel.selectedRoleFamily());
         });*/
 
+        this.getReviewCount = ko.computed(() =>{
+        	if (!this.filterPanel.selectedCompanyName()) {
+                return [];
+            }
+
+            var selectedCompanyNameReviews = this.mydata().filter(r => r.CompanyName === this.filterPanel.selectedCompanyName());
+            var reviewCount = selectedCompanyNameReviews.length;
+            return reviewCount;
+        });
+
         this.averageOverallScore = ko.computed(() => {
             if (!this.filterPanel.selectedCompanyName()) {
                 return [];
