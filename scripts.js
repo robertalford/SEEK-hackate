@@ -31,5 +31,10 @@ require(['knockout'], function (ko) {
 		template: { require: 'text!pages/mydata/chart.html' }
 	});
 
+	ko.components.register('heatmap', {
+		viewModel: { require: 'pages/mydata/heatmap' },
+		template: { require: 'text!pages/mydata/heatmap.html' }
+	});
+
 	ko.applyBindings(new NavigationViewModel());
 });
