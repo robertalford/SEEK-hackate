@@ -17,6 +17,7 @@ define(['knockout', 'data/data'], function (ko, data) {
 			selectedLocation: ko.observable(),
 			selectedSalaryMin: ko.observable(0),
 			selectedSalaryMax: ko.observable("200+"),
+			selectedRecommended: ko.observable("All"),
 			companyNames: ko.computed(() => {
 				return uniqueArray(this.mydata().map(d => d.CompanyName))
 			}),
@@ -25,7 +26,8 @@ define(['knockout', 'data/data'], function (ko, data) {
 			}),
 			location: ko.computed(() => {
 				return uniqueArray(this.mydata().map(d => d.Location))
-			})
+			}),
+			recommended: ['All', 'Recommended', 'Not recommended']
 		};
 
 		this.filterPanel.roles = ko.computed(() => {
@@ -39,7 +41,8 @@ define(['knockout', 'data/data'], function (ko, data) {
 				(r.RoleClean === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
 				(r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
 				r.AnnualisedSalary >= this.filterPanel.selectedSalaryMin() * 1000 &&
-				(r.AnnualisedSalary <= this.filterPanel.selectedSalaryMax() * 1000|| this.filterPanel.selectedSalaryMax() === "200+")			
+				(r.AnnualisedSalary <= this.filterPanel.selectedSalaryMax() * 1000|| this.filterPanel.selectedSalaryMax() === "200+") &&
+				(this.filterPanel.selectedRecommended() === "All" || r.Recommended === (this.filterPanel.selectedRecommended() === 'Recommended' ? true : false))
 			)
 		});
 	}
