@@ -32,8 +32,16 @@
 				<div class="content">
 
 					<div data-bind="foreach: mydata">
-						<span data-bind="text: CompanyName"></span>
+						
+						<div class="reviewCard">
+							<span data-bind="text: CompanyName"></span><br>
+							<span data-bind="text: Role"></span><br><br>
+							Pros: <span data-bind="text: Pros"></span><br><Br>
+							Cons: <span data-bind="text: Cons"></span><br><Br>
+						</div>
+
 					</div>
+
 				</div>
 
 			</div>		
