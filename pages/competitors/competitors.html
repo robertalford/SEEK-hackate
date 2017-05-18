@@ -7,7 +7,7 @@
             <div id="dashboard-box1" class="dashboard-box roleStat">
 	        	<div class="dashboard-heading">
 	        		<div>
-	        			<h1>REVIEWS</h1>
+	        			REVIEWS
 	        		</div>
 	        		<div class="dashboard-content">
 	        			486
@@ -18,12 +18,31 @@
             <div id="dashboard-box2" class="dashboard-box roleStat">
 	        	<div class="dashboard-heading">
 	        		<div>
-	        			<h1>RATING</h1>
+	        			RATING
 	        		</div>
 	        		<div class="dashboard-content">
 
-	        			<div class="frame-box">ANZ: 3.2</div>
+	        			<div class="frame-box">
+	        				<h2  data-bind="text: filterPanel.selectedCompanyName()"></h2>
+	        				<span data-bind="text: averageOverallScore"></span>
+	        			</div>
+	        			
 	        			<div class="frame-box">Competitors: 3.4</div>
+
+	        			<div class="averages" data-bind="foreach: averageAllCompanyScore">
+	        				<h3><!-- ko template: {name: "stars", data: careerDevOpp} --><!-- /ko --> Carrer Development:
+	        				<span></span></h3>
+	        				<h3><!-- ko template: {name: "stars", data: worklifeBal} --><!-- /ko -->Worklife balance:
+	        				<span></span></h3>
+	        				<h3><!-- ko template: {name: "stars", data: management} --><!-- /ko -->Management:
+	        				<span></span></h3>
+	        				<h3><!-- ko template: {name: "stars", data: benefits} --><!-- /ko -->Benefits & Perks:
+	        				<span ></span></h3>
+	        				<h3><!-- ko template: {name: "stars", data: diversity} --><!-- /ko -->Diversity & Equality:
+	        				<span ></span></h3>
+	        				<h3><!-- ko template: {name: "stars", data: workingEnv} --><!-- /ko -->Working environment:
+	        				<span ></span></h3>
+	        			</div>
 
 	        		</div>
 	        	</div>
@@ -31,7 +50,7 @@
             <div id="dashboard-box3" class="dashboard-box roleStat">
 	        	<div class="dashboard-heading">
 	        		<div>
-	        			<h1>TOP REVIEWERS</h1>
+	        			TOP REVIEWERS
 	        		</div>
 	        		<div class="dashboard-content">
 	        			<div>1) Sales (226): 3.2</div>

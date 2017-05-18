@@ -116,10 +116,10 @@ body {
 	font-size: 16px;
 	margin-top: -20px;
 }
-#dashboard-box2 .dashboard-content div,
+/*#dashboard-box2 .dashboard-content div,
 #dashboard-box3 .dashboard-content div {
 	margin-top: 20px;
-}
+}*/
 #dashboard-box3 .dashboard-content div.dashboard-details {
 	font-size:10px;
 }
@@ -140,7 +140,8 @@ body {
 .dashboard-content .frame-box{
 	order:1;
 	width:40%;
-	
+	height:30px;
+	margin:0 0 5px 0!important;
 
 }
 #dashboard-box3 .dashboard-heading {
@@ -151,6 +152,20 @@ body {
 .dashboard-heading H1{
 	padding:0;
 	margin:auto 0;
+}
+
+.dashboard-content H3, {
+	font-size:0.7em !important;
+	font-weight:normal;
+}
+
+ .dashboard-content .averages H2 {
+ 	margin:0;
+ }
+
+.dashboard-content .averages {
+	width:95%;
+	display:block;
 }
 
 i {

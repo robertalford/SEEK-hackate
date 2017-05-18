@@ -7,6 +7,7 @@ define(['knockout', 'data/data'], function (ko, data) {
 
     return function ViewModel(params) {
         this.mydata = ko.observable(data.mydata);
+        
 
         this.filterPanel = {
             salaryMins: salarySteps.slice(0, salarySteps.length - 1),
@@ -18,6 +19,7 @@ define(['knockout', 'data/data'], function (ko, data) {
             selectedSalaryMin: ko.observable(0),
             selectedSalaryMax: ko.observable("200+"),
             selectedRecommended: ko.observable("All"),
+
             companyNames: ko.computed(() => {
                 return uniqueArray(this.mydata().map(d => d.CompanyName))
             }),
@@ -46,12 +48,80 @@ define(['knockout', 'data/data'], function (ko, data) {
             )
         });
 
-        this.competitorsData - ko.computed(() => {
+        /*this.competitorsData - ko.computed(() => {
             if (!this.filterPanel.selectedRoleFamiliy()) {
                 return [];
             }
 
             return this.mydata().filter(r => r.RoleFamily === this.filterPanel.selectedRoleFamily());
+        });*/
+
+        this.averageOverallScore = ko.computed(() => {
+            if (!this.filterPanel.selectedCompanyName()) {
+                return [];
+            }
+
+            var selectedCompanyNameReviews = this.mydata().filter(r => r.CompanyName === this.filterPanel.selectedCompanyName());
+            var overAllScore = doAverage(selectedCompanyNameReviews,"OverallRating");
+            return  overAllScore;       
+            
         });
+
+        this.averageAllCompanyScore = ko.computed(() =>{
+        	if (!this.filterPanel.selectedCompanyName()) {
+                return [];
+            }
+
+            //this.companyScoresObj = ko.observable();
+
+            var selectedCompanyNameReviews = this.mydata().filter(r => r.CompanyName === this.filterPanel.selectedCompanyName());
+        	//var companyScores = [];
+        	var companyScoresObj = {};
+        	companyScoresObj.myAverages = {};
+
+        	var careerDevOpp = doAverage(selectedCompanyNameReviews, "CareerDevOpp");
+        	//companyScores.push(careerDevOpp);
+        	companyScoresObj.careerDevOpp = careerDevOpp;
+        	
+        	var worklifeBal = doAverage(selectedCompanyNameReviews, "WorklifeBal");
+        	//companyScores.push(worklifeBal);
+        	companyScoresObj.worklifeBal = worklifeBal;
+
+        	var management = doAverage(selectedCompanyNameReviews, "Management");
+        	//companyScores.push(management);
+        	companyScoresObj.management = management;
+        	
+        	var benefits = doAverage(selectedCompanyNameReviews, "Benefits");
+        	//companyScores.push(benefits);
+        	companyScoresObj.benefits = benefits;
+        	
+        	var diversity = doAverage(selectedCompanyNameReviews, "Diversity");
+        	//companyScores.push(diversity);
+        	companyScoresObj.diversity = diversity;
+        	
+        	var workingEnv = doAverage(selectedCompanyNameReviews, "WorkingEnv");
+        	//companyScores.push(workingEnv);
+        	companyScoresObj.workingEnv = workingEnv;
+        	
+        	
+        	//var companyScoresObject = ko.toJSON(companyScoresObj);
+        	
+
+        	var companyScores = [];
+        	companyScores.push(companyScoresObj);
+        	//console.log(companyScores);
+
+        	return companyScores;
+
+        });
+        //console.log(this.averageAllCompanyScore);
+        function doAverage(objectArray,fieldToCalculate){
+        	var curSum = 0;
+            for (var i=0; i < objectArray.length; i++){
+            	
+            	curSum += objectArray[i][fieldToCalculate];
+            }
+            return curSum / objectArray.length;
+        }
     }
 });
