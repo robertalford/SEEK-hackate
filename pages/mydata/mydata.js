@@ -21,14 +21,18 @@ define(['knockout', 'data/data'], function (ko, data) {
 			companyNames: ko.computed(() => {
 				return uniqueArray(this.mydata().map(d => d.CompanyName))
 			}),
-			roleFamilies: ko.computed(() => {
-				return uniqueArray(this.mydata().map(d => d.SubClassification))
-			}),
+			// roleFamilies: ko.computed(() => {
+			// 	return uniqueArray(this.mydata().map(d => d.SubClassification))
+			// }),
 			location: ko.computed(() => {
 				return uniqueArray(this.mydata().map(d => d.Location))
 			}),
 			recommended: ['All', 'Recommended', 'Not recommended']
 		};
+
+		this.filterPanel.roleFamilies = ko.computed(() => {
+			return uniqueArray(this.mydata().filter(d => d.CompanyName === 'SEEK').map(d => d.SubClassification))
+		});
 
 		this.filterPanel.roles = ko.computed(() => {
 			return uniqueArray(this.mydata().filter(d => d.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()).map(d => d.RoleClean))
@@ -36,14 +40,18 @@ define(['knockout', 'data/data'], function (ko, data) {
 
 		this.mydataFiltered = ko.computed(() => {
 			return this.mydata().filter(r =>
-				(r.CompanyName === this.filterPanel.selectedCompanyName() || !this.filterPanel.selectedCompanyName()) &&
+				// (r.CompanyName === this.filterPanel.selectedCompanyName() || !this.filterPanel.selectedCompanyName()) &&
+				(r.CompanyName === 'SEEK') &&
 				(r.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
 				(r.RoleClean === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
 				(r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
-				r.AnnualisedSalary >= this.filterPanel.selectedSalaryMin() * 1000 &&
-				(r.AnnualisedSalary <= this.filterPanel.selectedSalaryMax() * 1000 || this.filterPanel.selectedSalaryMax() === "200+") &&
+				r.SalaryAmt >= this.filterPanel.selectedSalaryMin() * 1000 &&
+				(r.SalaryAmt <= this.filterPanel.selectedSalaryMax() * 1000 || this.filterPanel.selectedSalaryMax() === "200+") &&
 				(this.filterPanel.selectedRecommended() === "All" || r.Recommended === (this.filterPanel.selectedRecommended() === 'Recommended' ? true : false))
 			)
+
 		});
+		
+
 	}
 });

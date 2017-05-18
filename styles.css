@@ -80,12 +80,10 @@ body {
 }
 .dashboard-heading div {
 	vertical-align: middle;
-<<<<<<< HEAD
-	/*padding-top: 8px;*/
-=======
+
 	padding-top: 6px;
 	font-size: x-large;
->>>>>>> 6f5f1bd42fb479abd19a158b7c7f46d52f85865a
+
 }
 #dashboard-box1{
 	background-color: #005BB6;
@@ -213,10 +211,12 @@ i {
 .reviewSubContainer {
 	display: flex;
 	flex-direction: row;
+	margin: 0 -10px;
 }
 
 .reviewSubBox {
 	flex: 1;
+	margin: 0 10px;
 }
 
 .menu {
@@ -288,13 +288,13 @@ i {
 }
 
 .rightColumn {
-	flex: 1;
+	flex: 3;
 }
 
 .filterPanel {
 	background: #444;
 	color: #fff;
-	width: 300px;
+	flex: 1;
 	margin-right: 15px;
 	padding: 30px 15px;
 }

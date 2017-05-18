@@ -6,7 +6,7 @@
 
 	<!-- Filter Panel -->
 	<div class="filterPanel">
-		Company: <br><select data-bind="options: filterPanel.companyNames, value: filterPanel.selectedCompanyName, optionsCaption:'Choose..'"></select><br><br>
+<!-- 		Company: <br><select data-bind="options: filterPanel.companyNames, value: filterPanel.selectedCompanyName, optionsCaption:'Choose..'"></select><br><br> -->
 		Role Family: <br><select data-bind="options: filterPanel.roleFamilies, value: filterPanel.selectedRoleFamily, optionsCaption:'Choose..'"></select><br><br>		
 		Role: <br><select data-bind="options: filterPanel.roles, value: filterPanel.selectedRole, optionsCaption:'Choose..'"></select><br><br>
 		Location: <br><select data-bind="options: filterPanel.location, value: filterPanel.selectedLocation, optionsCaption:'Choose..'"></select><br><br>
@@ -23,43 +23,43 @@
 		<!-- Feed of reviews -->
 		<div data-bind="foreach: mydataFiltered">
 			<div class="reviewCard">
+
 				<div class="reviewHeading">
 					<span data-bind="text: Role"></span> at <span data-bind="text: CompanyName"></span>
+					<br>
+					<span style="font-style: italic; font-size: 14px; color: #0066cc;" data-bind="text: ExperienceSummary"></span><br><br>
 				</div>
 
 				<div class="reviewSubContainer">
-					<div class="reviewSubBox">
-						<span style="font-weight: 14px; color: #0066cc;" data-bind="text: ExperienceSummary"></span><br><br>
-						<b>Overall:</b> 
-						<!-- ko template: {name: "stars", data: OverallRating} --><!-- /ko -->
-						<br><br>
-						<b>Recommened:</b> <span data-bind="text: Recommended"></span><br><br>
-						
+					<div style="flex: 1" class="reviewSubBox">
+						<!-- ko template: {name: "starsMain", data: OverallRating} --><!-- /ko -->
+						<b><span style="padding-left: 5px;">Overall</span></b><br>
 
-					</div>
-					<div class="reviewSubBox">
-						<b>Pros:</b><br><span data-bind="text: Pros"></span><br><br>
-						<b>Cons:</b><br><span data-bind="text: Cons"></span><br>
-					</div>	
-					<div style="flex: 2" class="reviewSubBox">
-						<!-- ko template: {name: "stars", data: SalaryRating} --><!-- /ko -->
-						Salary Rating<br>
-						
 						<!-- ko template: {name: "stars", data: CareerDevOpp} --><!-- /ko -->
-						Career Development Opportunities<br>
+						<span style="padding-left: 5px;">Career Development</span><br>
 						
 						<!-- ko template: {name: "stars", data: WorklifeBal} --><!-- /ko -->
-						Worklife Balance<br>
+						<span style="padding-left: 5px;">Worklife Balance</span><br>
 						
 						<!-- ko template: {name: "stars", data: Management} --><!-- /ko -->
-						Management<br>
+						<span style="padding-left: 5px;">Management</span><br>
 						
 						<!-- ko template: {name: "stars", data: Benefits} --><!-- /ko -->
-						Benefits & Perks<br>
+						<span style="padding-left: 5px;">Benefits & Perks</span><br>
 						
 						<!-- ko template: {name: "stars", data: Diversity} --><!-- /ko -->
-						Diversity<br>
+						<span style="padding-left: 5px;">Diversity</span><br>
+
+						<!-- <b>Recommened:</b> <span data-bind="text: Recommended"></span><br><br> -->
+					</div>				
+					<div style="flex: 1" class="reviewSubBox">
+						<b>Pros:</b><br><span data-bind="text: Pros"></span>
+						<!-- <span style="font-weight: 14px; color: #0066cc;" data-bind="text: ExperienceSummary"></span><br><br> -->
 					</div>
+					<div style="flex: 1" class="reviewSubBox">
+						<b>Cons:</b><br><span data-bind="text: Cons"></span>
+					</div>	
+
 				</div>
 			</div>
 		</div>
@@ -68,9 +68,14 @@
 
 </div>
 
-<script type="text/html" id="stars">
+<script type="text/html" id="starsMain">
 	<span data-bind="foreach: [0,1,2,3,4]">
 		<i data-bind="css: {fa: true, 'fa-star': $data < $parent, 'fa-star-o': $data >= $parent }"></i>
 	</span>
 </script>
 
+<script type="text/html" id="stars">
+	<span data-bind="foreach: [0,1,2,3,4]">
+		<i style="color: #aaa;" data-bind="css: {fa: true, 'fa-star': $data < $parent, 'fa-star-o': $data >= $parent }"></i>
+	</span>
+</script>
