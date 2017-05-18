@@ -26,5 +26,9 @@ require(['knockout'], function (ko) {
 		template: { require: 'text!pages/competitors/competitors.html' }
 	});
 
+	ko.components.register('chart', {
+		template: { require: 'text!pages/mydata/chart.html' }
+	});
+
 	ko.applyBindings(new NavigationViewModel());
 });
