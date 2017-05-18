@@ -3,32 +3,32 @@ define(['knockout', 'data/data'], function (ko, data) {
     return function ViewModel(params) {
         setTimeout(function () {
 
+
         //load mydata
         this.mydata = ko.observable(data.mydata);
 
         //mock selected companies
-        selectedcompanyID = '6';
         var selectedcompanies = 
             [
                 {
-                    "company_name": "you",
-                    "company_id": 1
+                    "company_name": "NAB",
+                    "company_id": 432320
                 },
                 {
-                    "company_name": "market",
-                    "company_id": 2
+                    "company_name": "AU average",
+                    "company_id": 432298
                 },
                 {
-                    "company_name": "competitor x",
-                    "company_id": 3
+                    "company_name": "ANZ",
+                    "company_id": 432833
                 },
                 {
-                    "company_name": "competitor y",
-                    "company_id": 4
+                    "company_name": "Telstra",
+                    "company_id": 432545
                 },
                 {
-                    "company_name": "competitor z",
-                    "company_id": 5
+                    "company_name": "Deloitte",
+                    "company_id": 432746
                 }
             ];
 
@@ -36,13 +36,16 @@ define(['knockout', 'data/data'], function (ko, data) {
         var values = [];
         for (i = 0; i < selectedcompanies.length; i++) {
             var averagerating = 0;
+            var reviewcount = 0;
             for (z = 0; z < data.mydata.length; z++) {
                     if (data.mydata[z].CompanyId == selectedcompanies[i].company_id) {
                         averagerating += data.mydata[z].OverallRating;
+                        reviewcount = reviewcount + 1;
                     }
                 }
-            saveragerating = averagerating / data.mydata.length;
-            values.push(saveragerating);
+            averagerating = averagerating / reviewcount;
+            averagerating = Math.round( averagerating * 10 ) / 10;
+            values.push(averagerating);
         }
 
         //split categories into separate array -- chart to be refactored to read straight from source    
@@ -60,12 +63,12 @@ define(['knockout', 'data/data'], function (ko, data) {
         });
 
         var tickVals = grid.map(function(d,i){
-            if(i>0){ return i*10; }
+            if(i>0){ return i*1; }
             else if(i===0){ return "100";}
         });
 
         var xscale = d3.scale.linear()
-                        .domain([0,5])
+                        .domain([0,6])
                         .range([0,722]);
 
         var yscale = d3.scale.linear()
@@ -145,7 +148,14 @@ define(['knockout', 'data/data'], function (ko, data) {
                             .attr({'x':function(d) {return xscale(d)-200; },'y':function(d,i){ return yscale(i)+35; }})
                             .text(function(d){ return d; }).style({'fill':'#fff','font-size':'14px'});
 
+            
+    
+
         }, 0)
 
+
+
     }
+
 });
+

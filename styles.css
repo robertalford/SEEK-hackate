@@ -263,8 +263,13 @@ i {
 	color: #333;
 	margin: 10 0px;
 	margin-bottom: 10px;
-	padding: 1px 20px;
+	padding: 1px 20px 16px;
 }
+
+.chartData #wrapper #yaxis text {
+	font-size: 130%;
+}
+
 .filterPanel select {
 	margin-top: 5px;
 	width: 100%;
@@ -379,3 +384,125 @@ li.menulink:hover {
         padding: 10 80 20 80;
     }
 }
+
+	.chartData h2 {
+		padding: 20px 0 30px 20px; 
+	}
+	
+	.chartData h2 .facet {
+		color: #B41782;
+		font-size: 120%; 
+	}
+	
+	.chartmenu {
+		float: right;
+		height: 50px;
+		width: 514px;
+		font-size: 9px;
+		padding: 7px;
+		margin-top: 35px;
+	}
+
+	.chartmenu ul {
+		background-color: transparent;
+	}
+
+	/* set up the button based on a width of 150px and 100px height */
+	.chartmenu ul li, .chartmenu ul li a{
+	    display:block;
+	    width:50px;
+	    height:60px;
+	    text-align:center;
+	    background-position:center 0;
+	    background-repeat: no-repeat;
+	    padding: 0;
+	    margin: 0;
+	    text-decoration: none;
+	}
+
+	.chartmenu ul li{
+	    float:left;
+	}
+
+	/* roll over - move the background image by the height of the button (100px) */
+	.chartmenu ul li a:hover { /* background-position:0 -100px;*/ font-weight: bold; }
+
+	/* active state - move the background image by twice height of the button (200px) */
+	.chartmenu ul li a.active, .chartmenu ul li a.active:hover {  font-weight: bold; color: #B41782;
+		/* background-position:0 -200px; */
+	}
+
+	/* define each button (background image and text position) */
+	.chartmenu ul li a.overall
+	{
+	    background-image:url(images/rating30.png); /* define image url */
+	    padding-top:32px; /* position the text using a combination of padding / height) */
+	    height: 60px;
+	}
+
+	.chartmenu ul li a.career
+	{
+	    background-image:url(images/management30.png); /* define image url */
+	    padding-top:32px; /* position the text using a combination of padding / height) */
+	    height: 70px;
+	}
+
+	.chartmenu ul li a.balance
+	{
+	    background-image:url(images/work-life-balance30.png); /* define image url */
+	    padding-top:32px; /* position the text using a combination of padding / height) */
+	    height: 70px;
+	}
+
+	.chartmenu ul li a.management
+	{
+	    background-image:url(images/management30.png); /* define image url */
+	    padding-top:32px; /* position the text using a combination of padding / height) */
+	    height: 70px;
+	}
+
+	.chartmenu ul li a.benefits
+	{
+	    background-image:url(images/rating30.png); /* define image url */
+	    padding-top:32px; /* position the text using a combination of padding / height) */
+	    height: 70px;
+	}
+
+	.chartmenu ul li a.diversity
+	{
+	    background-image:url(images/diversity30.png); /* define image url */
+	    padding-top:32px; /* position the text using a combination of padding / height) */
+	    height: 70px;
+	}
+
+	.chartmenu ul li a.environment
+	{
+	    background-image:url(images/env30.png); /* define image url */
+	    padding-top:32px; /* position the text using a combination of padding / height) */
+	    height: 70px;
+	}
+
+	.chartmenu ul li a.salary
+	{
+	    background-image:url(images/salary30.png); /* define image url */
+	    padding-top:32px; /* position the text using a combination of padding / height) */
+	    height: 70px;
+	}
+
+	.chartmenu ul li a.all
+	{
+	    background-image:url(images/table30.png); /* define image url */
+	    padding-top:32px; /* position the text using a combination of padding / height) */
+	    height: 70px;
+	}
+
+	.chartmenu ul li a.explore
+	{
+	    background-image:url(images/chart30.png); /* define image url */
+	    padding-top:32px; /* position the text using a combination of padding / height) */
+	    height: 70px;
+	}
+
+
+
+	
