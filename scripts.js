@@ -8,7 +8,7 @@ requirejs.config({
 require(['knockout'], function (ko) {
 	class NavigationViewModel {
 		constructor() {
-			this.currentPage = ko.observable("my-data");
+			this.currentPage = ko.observable("competitors");
 		}
 
 		navigate(page) {

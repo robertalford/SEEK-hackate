@@ -1,5 +1,5 @@
 
-<h1 data-bind="text: filterPanel.selectedRole() || 'All Roles'"></h1>
+<h1 data-bind="text: 'Reviews - ' + (filterPanel.selectedRole() || 'All Roles')"></h1>
 
 <!-- Container -->
 <div class="pageContainer">
@@ -19,23 +19,7 @@
 
 	<div class="rightColumn">
 
-		<!-- Role Title -->
-		<h2 class="roleTitleHeading" data-bind="text: filterPanel.selectedRole() || 'All Roles'">
-			
-		</h2>
-
-		<!-- Role stats -->
-		<div class="roleStats">
-			<div class="roleStat">Stat 1</div>	
-			<div class="roleStat">Stat 2</div>	
-			<div class="roleStat">Stat 3</div>	
-		</div>		
-
-		<!-- Chart -->
-		<chart />
-
 		<!-- Feed of reviews -->
-		<h2>Reviews</h2>
 		<div data-bind="foreach: mydataFiltered">
 			<div class="reviewCard">
 				<div class="reviewHeading"><span data-bind="text: Role"></span> at <span data-bind="text: CompanyName"></span></div>
