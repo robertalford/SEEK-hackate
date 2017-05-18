@@ -40,13 +40,6 @@
 	        	</div>
             </div>
         </div>
-        <div id="box3" class="box roleStat">
-        	<div class="heading">
-        		<div>
-        			POPULAR ROLES
-        		</div>
-        	</div>
-        </div>
     </div>
 
 <!-- Container -->
@@ -66,65 +59,9 @@
 	</div>
 
 	<div class="rightColumn">
-
-		<!-- Role Title -->
-		<h2 class="roleTitleHeading" data-bind="text: filterPanel.selectedRole() || 'All Roles'">
-			
-		</h2>
-
-		<!-- Role stats -->
-		<div class="roleStats">
-			<div class="roleStat">Stat 1</div>	
-			<div class="roleStat">Stat 2</div>	
-			<div class="roleStat">Stat 3</div>	
-		</div>		
-
 		<!-- Chart -->
 		<chart />
-
-		<!-- Feed of reviews -->
-		<h2>Reviews</h2>
-		<div data-bind="foreach: mydataFiltered">
-			<div class="reviewCard">
-				<div class="reviewHeading"><span data-bind="text: Role"></span> at <span data-bind="text: CompanyName"></span></div>
-
-				<div class="reviewSubContainer">
-					<div class="reviewSubBox">
-						<span style="font-weight: 14px; color: #0066cc;" data-bind="text: ExperienceSummary"></span><br><br>
-						<b>Overall:</b> 
-						<!-- ko template: {name: "stars", data: OverallRating} --><!-- /ko -->
-						<br><br>
-						<b>Recommened:</b> <span data-bind="text: Recommended"></span><br><br>
-						
-
-					</div>
-					<div class="reviewSubBox">
-						<b>Pros:</b><br><span data-bind="text: Pros"></span><br><br>
-						<b>Cons:</b><br><span data-bind="text: Cons"></span><br>
-					</div>	
-					<div style="flex: 2" class="reviewSubBox">
-						<!-- ko template: {name: "stars", data: SalaryRating} --><!-- /ko -->
-						Salary Rating<br>
-						
-						<!-- ko template: {name: "stars", data: CareerDevOpp} --><!-- /ko -->
-						Career Development Opportunities<br>
-						
-						<!-- ko template: {name: "stars", data: WorklifeBal} --><!-- /ko -->
-						Worklife Balance<br>
-						
-						<!-- ko template: {name: "stars", data: Management} --><!-- /ko -->
-						Management<br>
-						
-						<!-- ko template: {name: "stars", data: Benefits} --><!-- /ko -->
-						Benefits & Perks<br>
-						
-						<!-- ko template: {name: "stars", data: Diversity} --><!-- /ko -->
-						Diversity<br>
-					</div>
-				</div>
-			</div>
-		</div>
-
+		CHART GOES HERE
 	</div>
 
 </div>
