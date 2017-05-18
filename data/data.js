@@ -6,7 +6,7 @@ define({
       "CompanyId": 1,
       "CompanyName": "SEEK",
       "OverallRating": 0.8,
-      "Recommended": "TRUE",
+      "Recommended": true,
       "SalaryRating": 5,
       "CareerDevOpp": 4,
       "WorklifeBal": 4,
@@ -25,11 +25,11 @@ define({
       "Location": "Melbourne",
       "BaseSalaryType": "Annual",
       "SalaryAmt": 40000,
-      "Bonus": "FALSE",
+      "Bonus": false,
       "AnnualisedSalary": 40000,
-      "Theme1": "TRUE",
-      "Theme2": "FALSE",
-      "Theme3": "FALSE"
+      "Theme1": true,
+      "Theme2": false,
+      "Theme3": false
     },
     {
       "ReviewId": 2,
@@ -37,7 +37,7 @@ define({
       "CompanyId": 2,
       "CompanyName": "Telstra",
       "OverallRating": 0.7,
-      "Recommended": "FALSE",
+      "Recommended": false,
       "SalaryRating": 3,
       "CareerDevOpp": 4,
       "WorklifeBal": 4,
@@ -56,11 +56,11 @@ define({
       "Location": "Sydney",
       "BaseSalaryType": "Annual",
       "SalaryAmt": 45000,
-      "Bonus": "TRUE",
+      "Bonus": true,
       "AnnualisedSalary": 45000,
-      "Theme1": "FALSE",
-      "Theme2": "FALSE",
-      "Theme3": "FALSE"
+      "Theme1": false,
+      "Theme2": false,
+      "Theme3": false
     },
     {
       "ReviewId": 3,
@@ -68,7 +68,7 @@ define({
       "CompanyId": 3,
       "CompanyName": "REA",
       "OverallRating": 0.6,
-      "Recommended": "TRUE",
+      "Recommended": true,
       "SalaryRating": 4,
       "CareerDevOpp": 4,
       "WorklifeBal": 4,
@@ -87,11 +87,11 @@ define({
       "Location": "Melbourne",
       "BaseSalaryType": "Annual",
       "SalaryAmt": 39000,
-      "Bonus": "FALSE",
+      "Bonus": false,
       "AnnualisedSalary": 39000,
-      "Theme1": "TRUE",
-      "Theme2": "FALSE",
-      "Theme3": "TRUE"
+      "Theme1": true,
+      "Theme2": false,
+      "Theme3": true
     },
     {
       "ReviewId": 4,
@@ -99,7 +99,7 @@ define({
       "CompanyId": 4,
       "CompanyName": "Envato",
       "OverallRating": 0.8,
-      "Recommended": "TRUE",
+      "Recommended": true,
       "SalaryRating": 5,
       "CareerDevOpp": 4,
       "WorklifeBal": 4,
@@ -118,11 +118,11 @@ define({
       "Location": "Melbourne",
       "BaseSalaryType": "Annual",
       "SalaryAmt": 40000,
-      "Bonus": "FALSE",
+      "Bonus": false,
       "AnnualisedSalary": 40000,
-      "Theme1": "TRUE",
-      "Theme2": "FALSE",
-      "Theme3": "FALSE"
+      "Theme1": true,
+      "Theme2": false,
+      "Theme3": false
     },
     {
       "ReviewId": 5,
@@ -130,7 +130,7 @@ define({
       "CompanyId": 5,
       "CompanyName": "SEEK",
       "OverallRating": 0.7,
-      "Recommended": "FALSE",
+      "Recommended": false,
       "SalaryRating": 3,
       "CareerDevOpp": 4,
       "WorklifeBal": 4,
@@ -145,15 +145,15 @@ define({
       "RoleClean": "Senior Principal Developer",
       "RoleFamily": "Product Management",
       "Classification": "Information & Communication Technology",
-      "SubClassification": "Developers/Programmers",
+      "SubClassification": "Product Management & Development",
       "Location": "Melbourne",
       "BaseSalaryType": "Annual",
       "SalaryAmt": 45000,
-      "Bonus": "TRUE",
+      "Bonus": true,
       "AnnualisedSalary": 45000,
-      "Theme1": "FALSE",
-      "Theme2": "FALSE",
-      "Theme3": "FALSE"
+      "Theme1": false,
+      "Theme2": false,
+      "Theme3": false
     },
     {
       "ReviewId": 6,
@@ -161,7 +161,7 @@ define({
       "CompanyId": 6,
       "CompanyName": "ANZ",
       "OverallRating": 0.6,
-      "Recommended": "TRUE",
+      "Recommended": true,
       "SalaryRating": 4,
       "CareerDevOpp": 4,
       "WorklifeBal": 4,
@@ -180,11 +180,11 @@ define({
       "Location": "Melbourne",
       "BaseSalaryType": "Annual",
       "SalaryAmt": 39000,
-      "Bonus": "FALSE",
+      "Bonus": false,
       "AnnualisedSalary": 39000,
-      "Theme1": "TRUE",
-      "Theme2": "FALSE",
-      "Theme3": "TRUE"
+      "Theme1": true,
+      "Theme2": false,
+      "Theme3": true
     }
   ]
 });
