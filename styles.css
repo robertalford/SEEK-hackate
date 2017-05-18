@@ -74,12 +74,13 @@ body {
 	float: left;
 }
 .dashboard-heading {
-	height:36px;
+	height:40px;
 	text-align: center;
 }
 .dashboard-heading div {
 	vertical-align: middle;
-	padding-top: 8px;
+	padding-top: 6px;
+	font-size: x-large;
 }
 #dashboard-box1{
 	background-color: #005BB6;
@@ -106,8 +107,16 @@ body {
 	padding-top:30px;
 }
 .dashboard-content div {
+	color: black;
 	font-size: 16px;
 	margin-top: -20px;
+}
+#dashboard-box2 .dashboard-content div,
+#dashboard-box3 .dashboard-content div {
+	margin-top: 20px;
+}
+#dashboard-box3 .dashboard-content div.dashboard-details {
+	font-size:10px;
 }
 #dashboard-box2 .dashboard-heading {
 	background-color: #ffc600;
