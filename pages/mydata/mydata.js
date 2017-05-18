@@ -24,18 +24,27 @@ define(['knockout', 'data/data'], function (ko, data) {
 			// roleFamilies: ko.computed(() => {
 			// 	return uniqueArray(this.mydata().map(d => d.SubClassification))
 			// }),
-			location: ko.computed(() => {
-				return uniqueArray(this.mydata().map(d => d.Location))
-			}),
+			// location: ko.computed(() => {
+			// 	return uniqueArray(this.mydata().map(d => d.Location))
+			// }),
 			recommended: ['All', 'Recommended', 'Not recommended']
 		};
 
 		this.filterPanel.roleFamilies = ko.computed(() => {
-			return uniqueArray(this.mydata().filter(d => d.CompanyName === 'SEEK').map(d => d.SubClassification))
+			return uniqueArray(this.mydata().filter(d => 
+				d.CompanyName === 'SEEK').map(d => d.SubClassification))
 		});
 
 		this.filterPanel.roles = ko.computed(() => {
-			return uniqueArray(this.mydata().filter(d => d.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()).map(d => d.RoleClean))
+			return uniqueArray(this.mydata().filter(d => 
+				(d.CompanyName === 'SEEK') &&
+				(d.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily())).map(d => d.RoleClean))
+		});
+
+		this.filterPanel.location = ko.computed(() => {
+			return uniqueArray(this.mydata().filter(d => 
+				(d.CompanyName === 'SEEK') &&
+				(d.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily())).map(d => d.Location))
 		});
 
 		this.mydataFiltered = ko.computed(() => {
