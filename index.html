@@ -7,9 +7,9 @@
 
 		<title>Hack Ate - Company Review Insights</title>
 		<link rel="stylesheet" type="text/css" href="styles.css?v=1">
-		<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">		
+		<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">	
+		<script type="text/javascript" src="./node_modules/knockout/build/output/knockout-latest.js"></script>	
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="scripts.js?v=2"></script>
 		<link rel="icon" type="image/jpeg" href="seek.jpeg" />
 	</head>
 
@@ -29,7 +29,13 @@
 			</div>			
 
 			<div class="main centered">
-				<div class="content"></div>
+				<div class="content">
+
+					<div data-bind="foreach: mydata">
+						<span data-bind="text: CompanyName"></span>
+					</div>
+				</div>
+
 			</div>		
 
 			<div class="push"></div>	
@@ -41,5 +47,6 @@
 		</div>
 
 	</body>
+		<script type="text/javascript" src="scripts.js?v=3"></script>
 
 </html>
