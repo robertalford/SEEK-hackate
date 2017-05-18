@@ -8,10 +8,10 @@ requirejs.config({
 require(['knockout'], function (ko) {
 
 	ko.components.register('my-data', {
-		viewModel: { require: 'pages/mydata' },
-		template: { require: 'text!pages/mydata.html' }
+		viewModel: { require: 'pages/mydata/mydata' },
+		template: { require: 'text!pages/mydata/mydata.html' }
 	});
 	
 	ko.applyBindings();
-	
+
 });
