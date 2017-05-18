@@ -6,10 +6,22 @@
 
 	<!-- Filter Panel -->
 	<div class="filterPanel">
-	Filter panel
+		<select data-bind="options: filterPanel.companyNames, value: filterPanel.selectedCompanyName"></select>
 	</div>
 
 	<div class="rightColumn">
+
+		<!-- Role Title -->
+		<div class="roleTitleHeading">
+		Product Managers
+		</div>
+
+		<!-- Role stats -->
+		<div class="roleStats">
+			<div class="roleStat">Stat 1</div>	
+			<div class="roleStat">Stat 2</div>	
+			<div class="roleStat">Stat 3</div>	
+		</div>		
 
 		<!-- Chart -->
 		<div class="chartData">
@@ -17,7 +29,7 @@
 		</div>
 
 		<!-- Feed of reviews -->
-		<div data-bind="foreach: mydata">
+		<div data-bind="foreach: mydataFiltered">
 			<div class="reviewCard">
 				<span data-bind="text: CompanyName"></span><br>
 				<span data-bind="text: Role"></span><br><br>

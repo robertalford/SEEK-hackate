@@ -128,7 +128,7 @@ define({
       "ReviewId": 5,
       "CandidateId": 5,
       "CompanyId": 5,
-      "CompanyName": "Carsales",
+      "CompanyName": "SEEK",
       "OverallRating": 0.7,
       "Recommended": "FALSE",
       "SalaryRating": 3,
