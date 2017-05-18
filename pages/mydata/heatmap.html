@@ -1,6 +1,97 @@
-		<div class="chartData">
+<style>
+	rect.bordered {
+        stroke: #E6E6E6;
+        stroke-width:2px;   
+      }
 
-			<h2>How do you compare across<br /><span class="facet">all areas:<span></h2>
-			<div id="wrapperA"></div>
+      text.mono {
+        font-size: 9pt;
+        font-family: Consolas, courier;
+        fill: #aaa;
+      }
+
+      text.axis-workweek {
+        fill: #000;
+      }
+
+      text.axis-worktime {
+        fill: #000;
+      }
+
+      .heatmaplabels {
+      	clear: both;
+      	float: left;
+      	margin-left: 166px;
+      	margin-top: 0;
+      	top: 30px;
+    	position: relative;
+      }
+
+      .heatmaplabels ul li {
+      	width: 58px;
+      }
+
+      .heatmapaxis { 
+      	clear: both;
+      	float: left;
+      	width: 140px;
+      	margin: 74px 0 0 0;
+      }
+
+      .heatmapaxis ul {
+      	background-color: transparent;
+      } 
+
+	  .heatmapaxis ul li {
+      	text-align: right;
+    	width: 160px;
+    	padding-bottom: 42px;
+      }
+
+      .heatmapwrapper {
+      	float: left;
+      	width: 650px;
+      }
+
+	.heatmaparea h2 {
+		padding-bottom: 0;
+	}
+
+      .heatmaparea p {
+      	clear: both;
+      	font-size: 75%;
+      }
+      
+      </style>
+		<div class="chartData heatmaparea">
+
+			<h2>How do you compare across <span class="facet">all areas:<span></h2>
+
+			<div class="chartmenu heatmaplabels">
+				<ul>
+					<li><a href="" class="overall active">Overall rating</a></li>
+					<li><a href="" class="career">Career</a></li>
+					<li><a href="" class="balance">Work life balance</a></li>
+					<li><a href="" class="diversity">Diversity</a></li>
+					<li><a href="" class="environment">Working environment</a></li>
+					<li><a href="" class="salary">Salary</a></li>
+					<li><a href="" class="management">Manage- ment</a></li>
+					<li><a href="" class="benefits">Benefits & perks</a></li>
+				</ul>
+			</div>
+
+			<div class="heatmapaxis">
+				<ul>
+					<li>you</li>
+					<li>market</li>
+					<li>competitor x</li>
+					<li>competitor y</li>
+					<li>competitor z</li>
+				</ul>
+			</div>
+			<div class="heatmapwrapper">
+				<div id="chart"></div>
+			</div>
+			<p>This information is for internal use only.</p>
 
 		</div>
