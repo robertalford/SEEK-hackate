@@ -220,6 +220,11 @@ i {
 	padding: 30px 15px;
 }
 
+.reviewHeading {
+	font-size: 18px;
+	margin-bottom: 5px;
+}
+
 ul {
     list-style-type: none;
     margin: 0;

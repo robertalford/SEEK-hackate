@@ -45,5 +45,13 @@ define(['knockout', 'data/data'], function (ko, data) {
                 (this.filterPanel.selectedRecommended() === "All" || r.Recommended === (this.filterPanel.selectedRecommended() === 'Recommended' ? true : false))
             )
         });
+
+        this.competitorsData - ko.computed(() => {
+            if (!this.filterPanel.selectedRoleFamiliy()) {
+                return [];
+            }
+
+            return this.mydata().filter(r => r.RoleFamily === this.filterPanel.selectedRoleFamily());
+        });
     }
 });
