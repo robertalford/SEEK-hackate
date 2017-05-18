@@ -11,23 +11,23 @@ define(['knockout', 'data/data'], function (ko, data) {
         var selectedcompanies = 
             [
                 {
-                    "company_name": "you",
+                    "company_name": "NAB",
                     "company_id": 432320
                 },
                 {
-                    "company_name": "market",
+                    "company_name": "AU average",
                     "company_id": 432298
                 },
                 {
-                    "company_name": "competitor x",
+                    "company_name": "ANZ",
                     "company_id": 432833
                 },
                 {
-                    "company_name": "competitor y",
+                    "company_name": "Telstra",
                     "company_id": 432545
                 },
                 {
-                    "company_name": "competitor z",
+                    "company_name": "Deloitte",
                     "company_id": 432746
                 }
             ];
