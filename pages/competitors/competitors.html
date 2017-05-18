@@ -52,10 +52,11 @@
 		Role: <br><select data-bind="options: filterPanel.roles, value: filterPanel.selectedRole, optionsCaption:'Choose..'"></select><br><br>
 		Location: <br><select data-bind="options: filterPanel.location, value: filterPanel.selectedLocation, optionsCaption:'Choose..'"></select><br><br>
 		Salary: <br>
-			<select class="salary" data-bind="options: filterPanel.salaryMins, value: filterPanel.selectedSalaryMin"></select>	to 
-			<select class="salary" data-bind="options: filterPanel.salaryMaxes, value: filterPanel.selectedSalaryMax"></select>	
-			
-			
+		<span class='salaryRow'>
+			<select class="salary" data-bind="options: filterPanel.salaryMins, value: filterPanel.selectedSalaryMin"></select><span>to</span> 
+			<select class="salary" data-bind="options: filterPanel.salaryMaxes, value: filterPanel.selectedSalaryMax"></select>	<br><br>
+			</span>
+		Recommended: <br><select data-bind="options: filterPanel.recommended, value: filterPanel.selectedRecommended"></select><br><br>
 	</div>
 
 	<div class="rightColumn">
