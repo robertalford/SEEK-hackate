@@ -5,6 +5,8 @@ requirejs.config({
 	}
 });
 
+var globallySetCompany = 'ANZ';
+
 require(['knockout'], function (ko) {
 	class NavigationViewModel {
 		constructor() {

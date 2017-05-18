@@ -38,7 +38,7 @@ define(['knockout', 'data/data'], function (ko, data) {
 
         this.mydataFiltered = ko.computed(() => {
             return this.mydata().filter(r =>
-                (r.CompanyName === this.filterPanel.selectedCompanyName() || !this.filterPanel.selectedCompanyName()) &&
+                (r.CompanyName === globallySetCompany) &&
                 (r.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
                 (r.RoleClean === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
                 (r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
@@ -57,21 +57,21 @@ define(['knockout', 'data/data'], function (ko, data) {
         });*/
 
         this.getReviewCount = ko.computed(() =>{
-        	if (!this.filterPanel.selectedCompanyName()) {
-                return [];
-            }
+        	// if (!this.filterPanel.selectedCompanyName()) {
+         //        return [];
+         //    }
 
-            var selectedCompanyNameReviews = this.mydata().filter(r => r.CompanyName === this.filterPanel.selectedCompanyName());
+            var selectedCompanyNameReviews = this.mydata().filter(r => r.CompanyName === globallySetCompany);
             var reviewCount = selectedCompanyNameReviews.length;
             return reviewCount;
         });
 
         this.averageOverallScore = ko.computed(() => {
-            if (!this.filterPanel.selectedCompanyName()) {
-                return [];
-            }
+            // if (!this.filterPanel.selectedCompanyName()) {
+            //     return [];
+            // }
 
-            var selectedCompanyNameReviews = this.mydata().filter(r => r.CompanyName === this.filterPanel.selectedCompanyName());
+            var selectedCompanyNameReviews = this.mydata().filter(r => r.CompanyName === globallySetCompany);
             var overAllScore = doAverage(selectedCompanyNameReviews,"OverallRating");
             return  overAllScore;       
             
@@ -79,13 +79,13 @@ define(['knockout', 'data/data'], function (ko, data) {
 
 
         this.averageAllCompanyScore = ko.computed(() =>{
-        	if (!this.filterPanel.selectedCompanyName()) {
-                return [];
-            }
+        	// if (!this.filterPanel.selectedCompanyName()) {
+         //        return [];
+         //    }
 
             //this.companyScoresObj = ko.observable();
 
-            var selectedCompanyNameReviews = this.mydata().filter(r => r.CompanyName === this.filterPanel.selectedCompanyName());
+            var selectedCompanyNameReviews = this.mydata().filter(r => r.CompanyName === globallySetCompany);
         	//var companyScores = [];
         	var companyScoresObj = {};
         	companyScoresObj.myAverages = {};

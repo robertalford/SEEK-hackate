@@ -13,9 +13,14 @@
 		Salary: <br>
 		<span class='salaryRow'>
 			<select class="salary" data-bind="options: filterPanel.salaryMins, value: filterPanel.selectedSalaryMin"></select><span>to</span> 
-			<select class="salary" data-bind="options: filterPanel.salaryMaxes, value: filterPanel.selectedSalaryMax"></select>	<br><br>
-			</span>
+			<select class="salary" data-bind="options: filterPanel.salaryMaxes, value: filterPanel.selectedSalaryMax"></select>
+			</span><br>
+		<!-- Gender: <br><select data-bind="options: filterPanel.gender, value: filterPanel.selectedGender"></select><br> -->
+		Gender: <br><select data-bind="options: filterPanel.gender, value: filterPanel.selectedGender, optionsCaption:'Choose..'"></select><br><br>
 		Recommended: <br><select data-bind="options: filterPanel.recommended, value: filterPanel.selectedRecommended"></select><br><br>
+		Actions:<br>
+		<button class="primary">Download CSV</button><br>
+		<button class="secondary">Set Email Alert</button><br>
 	</div>
 
 	<div class="rightColumn">
@@ -25,6 +30,7 @@
 			<div class="reviewCard">
 
 				<div class="reviewHeading">
+					<i style="color: #888; margin-right: 10px;" data-bind="css: {fa: true, 'fa-male': Gender = 'Male', 'fa-female': Gender = 'Female'}"></i>
 					<span data-bind="text: Role"></span> at <span data-bind="text: CompanyName"></span>
 					<br>
 					<span style="font-style: italic; font-size: 14px; color: #0066cc;" data-bind="text: ExperienceSummary"></span><br><br>
@@ -79,3 +85,4 @@
 		<i style="color: #aaa;" data-bind="css: {fa: true, 'fa-star': $data < $parent, 'fa-star-o': $data >= $parent }"></i>
 	</span>
 </script>
+
