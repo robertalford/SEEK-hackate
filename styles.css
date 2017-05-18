@@ -61,62 +61,64 @@ body {
    	justify-content: center;
 }
 
-body  {
-        		font-family: Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif;
-        	}
-            #dashboard {
-            	align-self: center;
-/*            	width: 720px;*/
-            }
-            .box {
-        		width: 240px;
-        		height: 238px;
-        		background: white;
-        		float: left;
-        	}
-/*        	.heading {
-        		height:36px;
-        		text-align: center;
-        	}
-        	.heading div {
-        		vertical-align: middle;
-        		padding-top: 8px;
-        	}*/
-        	#box1{
-        		background-color: #005BB6;
-        	}
-        	#box2{
-        		background-color: #ffffb3;	
-        	}
-        	#box3{
-        		background-color: #ffe6f7;
-        	}
-        	#box1 .heading {
-        		background-color: #0d3880;
-        		color: white;
-        	}
-        	#box1 .content {
-        		height: 202px;
-        		background-image: url('images/australia.png');
-        		background-size: 100%;
-        		color: #0d3880;
-        		font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-        		font-weight: bold;
-        		font:70px bold;
-        		padding-top:50px;
-        	}
-/*        	.content div {
-        		font-size: 16px;
-        		margin-top: -20px;
-        	}*/
-        	#box2 .heading {
-        		background-color: #ffc600;
-        		color: white;
-        	}
-        	#box3 .heading {
-        		background-color: #e60278;
-        		color: white;
-        	}
+
+/*body  {
+	font-family: Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif;
+}*/
+#dashboard {
+	align-self: center;
+	display: flex;
+	flex-direction: row;
+}
+.dashboard-box {
+	flex:1;
+	height: 238px;
+	background: white;
+	float: left;
+}
+.dashboard-heading {
+	height:36px;
+	text-align: center;
+}
+.dashboard-heading div {
+	vertical-align: middle;
+	padding-top: 8px;
+}
+#dashboard-box1{
+	background-color: #005BB6;
+}
+#dashboard-box2{
+	background-color: #ffffb3;	
+}
+#dashboard-box3{
+	background-color: #ffe6f7;
+}
+#dashboard-box1 .dashboard-heading {
+	background-color: #0d3880;
+	color: white;
+}
+#dashboard-box1 .dashboard-content {
+	height: 202px;
+	background-image: url('images/australia.png');
+	background-size: 100%;
+	color: #0d3880;
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	font-weight: bold;
+	font:70px bold;
+	padding-top:50px;
+}
+.dashboard-content div {
+	font-size: 16px;
+	margin-top: -20px;
+}
+#dashboard-box2 .dashboard-heading {
+	background-color: #ffc600;
+	color: white;
+}
+#dashboard-box3 .dashboard-heading {
+	background-color: #e60278;
+	color: white;
+}
 
 i {
 	color: #ffc600;
