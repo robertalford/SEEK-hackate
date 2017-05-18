@@ -242,3 +242,7 @@ li.menulink:hover {
     }
 }
 
+.bar { fill: #0d3880; }
+.bar:hover {  fill: brown; }
+.axis--x path {  display: none; }
+

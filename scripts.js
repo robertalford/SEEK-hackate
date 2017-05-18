@@ -27,6 +27,7 @@ require(['knockout'], function (ko) {
 	});
 
 	ko.components.register('chart', {
+		viewModel: { require: 'pages/mydata/chart' },
 		template: { require: 'text!pages/mydata/chart.html' }
 	});
 
