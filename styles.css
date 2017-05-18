@@ -74,12 +74,17 @@ body {
 	float: left;
 }
 .dashboard-heading {
-	height:36px;
+	height:40px;
 	text-align: center;
 }
 .dashboard-heading div {
 	vertical-align: middle;
+<<<<<<< HEAD
 	/*padding-top: 8px;*/
+=======
+	padding-top: 6px;
+	font-size: x-large;
+>>>>>>> 6f5f1bd42fb479abd19a158b7c7f46d52f85865a
 }
 #dashboard-box1{
 	background-color: #005BB6;
@@ -107,8 +112,16 @@ body {
 	font-family: Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
 }
 .dashboard-content div {
+	color: black;
 	font-size: 16px;
 	margin-top: -20px;
+}
+#dashboard-box2 .dashboard-content div,
+#dashboard-box3 .dashboard-content div {
+	margin-top: 20px;
+}
+#dashboard-box3 .dashboard-content div.dashboard-details {
+	font-size:10px;
 }
 #dashboard-box2 .dashboard-heading {
 	background-color: #ffc600;
@@ -197,7 +210,7 @@ i {
 	color: #333;
 	margin: 10 0px;
 	margin-bottom: 10px;
-	height: 300px;
+	padding: 1px 20px;
 }
 .filterPanel select {
 	margin-top: 5px;
@@ -231,6 +244,11 @@ i {
 	width: 300px;
 	margin-right: 15px;
 	padding: 30px 15px;
+}
+
+.reviewHeading {
+	font-size: 18px;
+	margin-bottom: 5px;
 }
 
 ul {
@@ -274,8 +292,3 @@ li.menulink:hover {
         padding: 10 80 20 80;
     }
 }
-
-.bar { fill: #0d3880; }
-.bar:hover {  fill: brown; }
-.axis--x path {  display: none; }
-

@@ -1,58 +1,102 @@
-define(['knockout', 'data/data'], function(ko, data) {
-    
-
-setTimeout(function() {
-
-
-var svg = d3.select("svg"),
-    margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = +svg.attr("width") - margin.left - margin.right,
-    height = +svg.attr("height") - margin.top - margin.bottom;
-
-var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
-    y = d3.scaleLinear().rangeRound([height, 0]);
-
-var g = svg.append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-// load the data
-d3.json("/pages/mydata/you-v-others.json", function(error, data) {
-    data.forEach(function(d) {
-        d.company_name = d.company_name;
-        d.rating = +d.rating;
-    });
-
-  x.domain(data.map(function(d) { return d.company_name; }));
-  y.domain([0, d3.max(data, function(d) { return d.rating; })]);
-
-  g.append("g")
-      .attr("class", "axis axis--x")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
-
-  g.append("g")
-      .attr("class", "axis axis--y")
-      .call(d3.axisLeft(y).ticks(10, "%"))
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", "0.71em")
-      .attr("text-anchor", "end")
-      .text("Frequency");
-
-  g.selectAll(".bar")
-    .data(data)
-    .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", function(d) { return x(d.company_name); })
-      .attr("y", function(d) { return y(d.rating); })
-      .attr("width", x.bandwidth())
-      .attr("height", function(d) { return height - y(d.rating); });
-});
-
-}, 0)
-
-
+define(['knockout', 'data/data'], function (ko, data) {
     return function ViewModel(params) {
+        setTimeout(function () {
+
+        var categories= ['','You', 'Market', 'Competitor A', 'Competitor B', 'Competitor C'];
+        var dollars = [3.2,4,5,2,2.2];
+        var colors = ['#B41782','#404040','#747474','#898989','#898989','#A8A8A8'];
+
+        var grid = d3.range(25).map(function(i){
+            return {'x1':0,'y1':0,'x2':0,'y2':250};
+        });
+
+        var tickVals = grid.map(function(d,i){
+            if(i>0){ return i*10; }
+            else if(i===0){ return "100";}
+        });
+
+        var xscale = d3.scale.linear()
+                        .domain([0,5])
+                        .range([0,722]);
+
+        var yscale = d3.scale.linear()
+                        .domain([0,categories.length])
+                        .range([0,250]);
+
+        var colorScale = d3.scale.quantize()
+                        .domain([0,categories.length])
+                        .range(colors);
+
+        var canvas = d3.select('#wrapper')
+                        .append('svg')
+                        .attr({'width':800,'height':300});
+
+        var grids = canvas.append('g')
+                          .attr('id','grid')
+                          .attr('transform','translate(150,10)')
+                          .selectAll('line')
+                          .data(grid)
+                          .enter()
+                          .append('line')
+                          .attr({'x1':function(d,i){ return i*30; },
+                                 'y1':function(d){ return d.y1; },
+                                 'x2':function(d,i){ return i*30; },
+                                 'y2':function(d){ return d.y2; },
+                            })
+                          .style({'stroke':'#adadad','stroke-width':'1px'});
+
+        var xAxis = d3.svg.axis();
+            xAxis
+                .orient('bottom')
+                .scale(xscale)
+                .tickValues(tickVals);
+
+        var yAxis = d3.svg.axis();
+            yAxis
+                .orient('left')
+                .scale(yscale)
+                .tickSize(2)
+                .tickFormat(function(d,i){ return categories[i]; })
+                .tickValues(d3.range(17));
+
+        var y_xis = canvas.append('g')
+                          .attr("transform", "translate(150,0)")
+                          .attr('id','yaxis')
+                          .call(yAxis);
+
+        var x_xis = canvas.append('g')
+                          .attr("transform", "translate(150,250)")
+                          .attr('id','xaxis')
+                          .call(xAxis);
+
+        var chart = canvas.append('g')
+                            .attr("transform", "translate(150,0)")
+                            .attr('id','bars')
+                            .selectAll('rect')
+                            .data(dollars)
+                            .enter()
+                            .append('rect')
+                            .attr('height',40)
+                            .attr({'x':0,'y':function(d,i){ return yscale(i)+19; }})
+                            .style('fill',function(d,i){ return colorScale(i); })
+                            .attr('width',function(d){ return 0; });
+
+
+        var transit = d3.select("svg").selectAll("rect")
+                            .data(dollars)
+                            .transition()
+                            .duration(1000) 
+                            .attr("width", function(d) {return xscale(d); });
+
+        var transitext = d3.select('#bars')
+                            .selectAll('text')
+                            .data(dollars)
+                            .enter()
+                            .append('text')
+                            .attr({'x':function(d) {return xscale(d)-200; },'y':function(d,i){ return yscale(i)+35; }})
+                            .text(function(d){ return d+"$"; }).style({'fill':'#fff','font-size':'14px'});
+
+        }, 0)
+
     }
 });

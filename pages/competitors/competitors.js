@@ -1,5 +1,57 @@
-define(['knockout', 'data/data'], function(ko, data) {
+define(['knockout', 'data/data'], function (ko, data) {
+    const salarySteps = [0, 30, 40, 50, 60, 70, 80, 100, 120, 150, 200, "200+"]
+
+    function uniqueArray(array) {
+        return [...new Set(array)]
+    }
+
     return function ViewModel(params) {
-        this.mydata= data.mydata
+        this.mydata = ko.observable(data.mydata);
+
+        this.filterPanel = {
+            salaryMins: salarySteps.slice(0, salarySteps.length - 1),
+            salaryMaxes: salarySteps.slice(1),
+            selectedCompanyName: ko.observable(),
+            selectedRoleFamily: ko.observable(),
+            selectedRole: ko.observable(),
+            selectedLocation: ko.observable(),
+            selectedSalaryMin: ko.observable(0),
+            selectedSalaryMax: ko.observable("200+"),
+            selectedRecommended: ko.observable("All"),
+            companyNames: ko.computed(() => {
+                return uniqueArray(this.mydata().map(d => d.CompanyName))
+            }),
+            roleFamilies: ko.computed(() => {
+                return uniqueArray(this.mydata().map(d => d.SubClassification))
+            }),
+            location: ko.computed(() => {
+                return uniqueArray(this.mydata().map(d => d.Location))
+            }),
+            recommended: ['All', 'Recommended', 'Not recommended']
+        };
+
+        this.filterPanel.roles = ko.computed(() => {
+            return uniqueArray(this.mydata().filter(d => d.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()).map(d => d.RoleClean))
+        });
+
+        this.mydataFiltered = ko.computed(() => {
+            return this.mydata().filter(r =>
+                (r.CompanyName === this.filterPanel.selectedCompanyName() || !this.filterPanel.selectedCompanyName()) &&
+                (r.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
+                (r.RoleClean === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
+                (r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
+                r.AnnualisedSalary >= this.filterPanel.selectedSalaryMin() * 1000 &&
+                (r.AnnualisedSalary <= this.filterPanel.selectedSalaryMax() * 1000 || this.filterPanel.selectedSalaryMax() === "200+") &&
+                (this.filterPanel.selectedRecommended() === "All" || r.Recommended === (this.filterPanel.selectedRecommended() === 'Recommended' ? true : false))
+            )
+        });
+
+        this.competitorsData - ko.computed(() => {
+            if (!this.filterPanel.selectedRoleFamiliy()) {
+                return [];
+            }
+
+            return this.mydata().filter(r => r.RoleFamily === this.filterPanel.selectedRoleFamily());
+        });
     }
 });

@@ -1,16 +1,16 @@
-function uniqueArray(array) {
-	return [...new Set(array)]
-}
-
-const salarySteps = [0, 30, 40, 50, 60, 70, 80, 100, 120, 150, 200, "200+"]
-
 define(['knockout', 'data/data'], function (ko, data) {
+	function uniqueArray(array) {
+		return [...new Set(array)]
+	}
+
+	const salarySteps = [0, 30, 40, 50, 60, 70, 80, 100, 120, 150, 200, "200+"]
+
 	return function ViewModel(params) {
 		this.mydata = ko.observable(data.mydata);
 
 		this.filterPanel = {
-			salaryMins: salarySteps.slice(0, salarySteps.length -1),
-			salaryMaxes: salarySteps.slice(1), 
+			salaryMins: salarySteps.slice(0, salarySteps.length - 1),
+			salaryMaxes: salarySteps.slice(1),
 			selectedCompanyName: ko.observable(),
 			selectedRoleFamily: ko.observable(),
 			selectedRole: ko.observable(),
@@ -41,7 +41,7 @@ define(['knockout', 'data/data'], function (ko, data) {
 				(r.RoleClean === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
 				(r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
 				r.AnnualisedSalary >= this.filterPanel.selectedSalaryMin() * 1000 &&
-				(r.AnnualisedSalary <= this.filterPanel.selectedSalaryMax() * 1000|| this.filterPanel.selectedSalaryMax() === "200+") &&
+				(r.AnnualisedSalary <= this.filterPanel.selectedSalaryMax() * 1000 || this.filterPanel.selectedSalaryMax() === "200+") &&
 				(this.filterPanel.selectedRecommended() === "All" || r.Recommended === (this.filterPanel.selectedRecommended() === 'Recommended' ? true : false))
 			)
 		});
