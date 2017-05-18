@@ -1,4 +1,10 @@
-<div class="content">
-	<h1>My Data</h1>
-	<span class="data" />
+<div data-bind="foreach: mydata">
+	
+	<div class="reviewCard">
+		<span data-bind="text: CompanyName"></span><br>
+		<span data-bind="text: Role"></span><br><br>
+		Pros: <span data-bind="text: Pros"></span><br><Br>
+		Cons: <span data-bind="text: Cons"></span><br><Br>
+	</div>
+
 </div>

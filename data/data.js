@@ -1,4 +1,5 @@
-{
+require([], function() {
+    return {
     "mydata": [
   {
     "ReviewId": 1,
@@ -188,3 +189,4 @@
   }
 ]
 }
+});

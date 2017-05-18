@@ -4,7 +4,9 @@
   "description": "DB Instance = hackate Database host = hackate.chi7azzc6jzj.ap-southeast-2.rds.amazonaws.com Database name = hackate Database port = 3306 Master username = hackate Master password = hackate2017",
   "main": "scripts.js",
   "dependencies": {
-    "knockout": "^3.4.2"
+    "knockout": "^3.4.2",
+    "requirejs": "^2.3.3",
+    "text": "github:requirejs/text"
   },
   "devDependencies": {},
   "scripts": {

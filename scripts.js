@@ -1,17 +1,17 @@
-
-(async function(){
-	async function getData()
-	{
-		var response = await fetch('data/data.json');
-
-		return await response.json();
+requirejs.config({
+	paths: {
+		text: './node_modules/text/text',
+		knockout: './node_modules/knockout/build/output/knockout-latest'
 	}
+});
 
-	// On page load, get initial data
-	var data = await getData();
+require(['knockout'], function (ko) {
 
-    ko.applyBindings(data);
-
-})();
-
-
+	ko.components.register('my-data', {
+		viewModel: { require: 'pages/mydata' },
+		template: { require: 'text!pages/mydata.html' }
+	});
+	
+	ko.applyBindings();
+	
+});
