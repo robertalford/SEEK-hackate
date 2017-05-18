@@ -53,5 +53,8 @@ define(['knockout', 'data/data'], function (ko, data) {
 
             return this.mydata().filter(r => r.RoleFamily === this.filterPanel.selectedRoleFamily());
         });
+
+
+
     }
 });
