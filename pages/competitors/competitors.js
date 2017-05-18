@@ -14,6 +14,7 @@ define(['knockout', 'data/data'], function (ko, data) {
             salaryMaxes: salarySteps.slice(1),
             selectedCompanyName: ko.observable(),
             selectedRoleFamily: ko.observable(),
+            selectedGender: ko.observable(),
             selectedRole: ko.observable(),
             selectedLocation: ko.observable(),
             selectedSalaryMin: ko.observable(0),
@@ -23,14 +24,28 @@ define(['knockout', 'data/data'], function (ko, data) {
             companyNames: ko.computed(() => {
                 return uniqueArray(this.mydata().map(d => d.CompanyName))
             }),
-            roleFamilies: ko.computed(() => {
-                return uniqueArray(this.mydata().map(d => d.SubClassification))
-            }),
-            location: ko.computed(() => {
-                return uniqueArray(this.mydata().map(d => d.Location))
+            // roleFamilies: ko.computed(() => {
+            //     return uniqueArray(this.mydata().map(d => d.SubClassification))
+            // }),
+            // location: ko.computed(() => {
+            //     return uniqueArray(this.mydata().map(d => d.Location))
+            // }),
+            gender: ko.computed(() => {
+                return uniqueArray(this.mydata().map(d => d.Gender))
             }),
             recommended: ['All', 'Recommended', 'Not recommended']
         };
+
+        this.filterPanel.roleFamilies = ko.computed(() => {
+            return uniqueArray(this.mydata().filter(d => 
+                d.CompanyName === globallySetCompany).map(d => d.SubClassification)).sort()
+        });
+
+        this.filterPanel.location = ko.computed(() => {
+            return uniqueArray(this.mydata().filter(d => 
+                (d.CompanyName === globallySetCompany) &&
+                (d.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily())).map(d => d.Location)).sort()
+        });        
 
         this.filterPanel.roles = ko.computed(() => {
             return uniqueArray(this.mydata().filter(d => d.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()).map(d => d.RoleClean))
@@ -41,6 +56,7 @@ define(['knockout', 'data/data'], function (ko, data) {
                 (r.CompanyName === globallySetCompany) &&
                 (r.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
                 (r.RoleClean === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
+                (r.Gender === this.filterPanel.selectedGender() || !this.filterPanel.selectedGender()) &&
                 (r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
                 r.AnnualisedSalary >= this.filterPanel.selectedSalaryMin() * 1000 &&
                 (r.AnnualisedSalary <= this.filterPanel.selectedSalaryMax() * 1000 || this.filterPanel.selectedSalaryMax() === "200+") &&
