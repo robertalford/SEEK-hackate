@@ -105,8 +105,16 @@ body {
 	padding-top:30px;
 }
 .dashboard-content div {
+	color: black;
 	font-size: 16px;
 	margin-top: -20px;
+}
+#dashboard-box2 .dashboard-content div,
+#dashboard-box3 .dashboard-content div {
+	margin-top: 20px;
+}
+#dashboard-box3 .dashboard-content div.dashboard-details {
+	font-size:10px;
 }
 #dashboard-box2 .dashboard-heading {
 	background-color: #ffc600;
