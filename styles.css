@@ -79,7 +79,7 @@ body {
 }
 .dashboard-heading div {
 	vertical-align: middle;
-	padding-top: 8px;
+	/*padding-top: 8px;*/
 }
 #dashboard-box1{
 	background-color: #005BB6;
@@ -104,6 +104,7 @@ body {
 	font-weight: bold;
 	font:70px bold;
 	padding-top:30px;
+	font-family: Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
 }
 .dashboard-content div {
 	font-size: 16px;
@@ -113,9 +114,30 @@ body {
 	background-color: #ffc600;
 	color: white;
 }
+
+.dashboard-content {
+	height: 202px;
+	color: #0d3880;
+	font-weight: bold;
+	font:70px bold;
+	padding-top:30px;
+	font-family: Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+	display:flex;
+}
+.dashboard-content .frame-box{
+	order:1;
+	width:40%;
+	
+
+}
 #dashboard-box3 .dashboard-heading {
 	background-color: #e60278;
 	color: white;
+}
+
+.dashboard-heading H1{
+	padding:0;
+	margin:auto 0;
 }
 
 i {
