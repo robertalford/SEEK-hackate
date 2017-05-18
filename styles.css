@@ -61,10 +61,62 @@ body {
    	justify-content: center;
 }
 
-.reviewHeading{
-	font-size: 18px;
-	margin-bottom: 8px;
-}
+body  {
+        		font-family: Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif;
+        	}
+            #dashboard {
+            	align-self: center;
+            	width: 720px;
+            }
+            .box {
+        		width: 240px;
+        		height: 238px;
+        		background: white;
+        		float: left;
+        	}
+        	.heading {
+        		height:36px;
+        		text-align: center;
+        	}
+        	.heading div {
+        		vertical-align: middle;
+        		padding-top: 8px;
+        	}
+        	#box1{
+        		background-color: #005BB6;
+        	}
+        	#box2{
+        		background-color: #ffffb3;	
+        	}
+        	#box3{
+        		background-color: #ffe6f7;
+        	}
+        	#box1 .heading {
+        		background-color: #0d3880;
+        		color: white;
+        	}
+        	#box1 .content {
+        		height: 202px;
+        		background-image: url('images/australia.png');
+        		background-size: 100%;
+        		color: #0d3880;
+        		font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+        		font-weight: bold;
+        		font:70px bold;
+        		padding-top:50px;
+        	}
+        	.content div {
+        		font-size: 16px;
+        		margin-top: -20px;
+        	}
+        	#box2 .heading {
+        		background-color: #ffc600;
+        		color: white;
+        	}
+        	#box3 .heading {
+        		background-color: #e60278;
+        		color: white;
+        	}
 
 i {
 	color: #ffc600;
