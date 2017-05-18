@@ -186,7 +186,18 @@ i {
 }
 
 .filterPanel select.salary {
-	width: 46.3%;
+	width: initial;
+	flex: 1;
+}
+
+.filterPanel .salaryRow {
+	display:flex;
+	flex-direction: row;
+	align-items: baseline;
+}
+
+.filterPanel .salaryRow span {
+		padding: 0 5px;
 }
 
 .rightColumn {
