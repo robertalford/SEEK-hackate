@@ -89,6 +89,7 @@ body {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
+	align-items: flex-start
 }
 
 .roleTitleHeading {
@@ -109,6 +110,10 @@ body {
 	font-size: 14px;
 }
 
+.filterPanel select.salary {
+	width: 46.3%;
+}
+
 .rightColumn {
 	flex: 1;
 }
@@ -116,10 +121,9 @@ body {
 .filterPanel {
 	background: #444;
 	color: #fff;
-	height: 100%;
 	width: 300px;
 	margin-right: 15px;
-	padding: 15px;
+	padding: 30px 15px;
 }
 
 ul {

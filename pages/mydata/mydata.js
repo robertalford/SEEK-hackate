@@ -2,30 +2,45 @@ function uniqueArray(array) {
 	return [...new Set(array)]
 }
 
-define(['knockout', 'data/data'], function(ko, data) {
-    return function ViewModel(params) {
-        this.mydata = ko.observable(data.mydata);
+const salarySteps = [0, 30, 40, 50, 60, 70, 80, 100, 120, 150, 200, "200+"]
 
-        this.filterPanel = {
-        	companyNames: ko.computed(() => {
-        		return uniqueArray(this.mydata().map(d => d.CompanyName))
-        	}),
-        	roles: ko.computed(() => {
-        		return uniqueArray(this.mydata().map(d => d.RoleClean))
-        	}),
-        	location: ko.computed(() => {
-        		return uniqueArray(this.mydata().map(d => d.Location))
-        	}),        	
-        	selectedCompanyName: ko.observable(),
-        	selectedRole: ko.observable(),
-        	selectedLocation: ko.observable()
-        };
+define(['knockout', 'data/data'], function (ko, data) {
+	return function ViewModel(params) {
+		this.mydata = ko.observable(data.mydata);
 
-        this.mydataFiltered = ko.computed(() => {
-        	return this.mydata().filter(r => 
-        		(r.CompanyName === this.filterPanel.selectedCompanyName() || !this.filterPanel.selectedCompanyName()) &&
-        		(r.RoleClean === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
-        		(r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()))
-        });
-    }
+		this.filterPanel = {
+			salaryMins: salarySteps.slice(0, salarySteps.length -1),
+			salaryMaxes: salarySteps.slice(1), 
+			selectedCompanyName: ko.observable(),
+			selectedRoleFamily: ko.observable(),
+			selectedRole: ko.observable(),
+			selectedLocation: ko.observable(),
+			selectedSalaryMin: ko.observable(0),
+			selectedSalaryMax: ko.observable("200+"),
+			companyNames: ko.computed(() => {
+				return uniqueArray(this.mydata().map(d => d.CompanyName))
+			}),
+			roleFamilies: ko.computed(() => {
+				return uniqueArray(this.mydata().map(d => d.SubClassification))
+			}),
+			location: ko.computed(() => {
+				return uniqueArray(this.mydata().map(d => d.Location))
+			})
+		};
+
+		this.filterPanel.roles = ko.computed(() => {
+			return uniqueArray(this.mydata().filter(d => d.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()).map(d => d.RoleClean))
+		});
+
+		this.mydataFiltered = ko.computed(() => {
+			return this.mydata().filter(r =>
+				(r.CompanyName === this.filterPanel.selectedCompanyName() || !this.filterPanel.selectedCompanyName()) &&
+				(r.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
+				(r.RoleClean === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
+				(r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
+				r.AnnualisedSalary >= this.filterPanel.selectedSalaryMin() * 1000 &&
+				(r.AnnualisedSalary <= this.filterPanel.selectedSalaryMax() * 1000|| this.filterPanel.selectedSalaryMax() === "200+")			
+			)
+		});
+	}
 });

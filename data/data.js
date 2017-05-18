@@ -145,7 +145,7 @@ define({
       "RoleClean": "Senior Principal Developer",
       "RoleFamily": "Product Management",
       "Classification": "Information & Communication Technology",
-      "SubClassification": "Product Management & Development",
+      "SubClassification": "Developers/Programmers",
       "Location": "Melbourne",
       "BaseSalaryType": "Annual",
       "SalaryAmt": 45000,
