@@ -1,5 +1,5 @@
 
-<h1 data-bind="text: 'Reviews - ' + (filterPanel.selectedRole() || 'All Roles')"></h1>
+<h1>Reviews</h1>
 
 <!-- Container -->
 <div class="pageContainer">
@@ -7,8 +7,9 @@
 	<!-- Filter Panel -->
 	<div class="filterPanel">
 <!-- 		Company: <br><select data-bind="options: filterPanel.companyNames, value: filterPanel.selectedCompanyName, optionsCaption:'Choose..'"></select><br><br> -->
+		Keyword Search: <br><input placeholder="Enter search keyword..." data-bind="value: filterPanel.selectedKeywords, valueUpdate: 'keyup'"></input><br><br>		
 		Role Family: <br><select data-bind="options: filterPanel.roleFamilies, value: filterPanel.selectedRoleFamily, optionsCaption:'Choose..'"></select><br><br>		
-		Role: <br><select data-bind="options: filterPanel.roles, value: filterPanel.selectedRole, optionsCaption:'Choose..'"></select><br><br>
+		Role Type: <br><select data-bind="options: filterPanel.roles, value: filterPanel.selectedRole, optionsCaption:'Choose..'"></select><br><br>
 		Location: <br><select data-bind="options: filterPanel.location, value: filterPanel.selectedLocation, optionsCaption:'Choose..'"></select><br><br>
 		Salary: <br>
 		<span class='salaryRow'>
@@ -18,6 +19,7 @@
 		<!-- Gender: <br><select data-bind="options: filterPanel.gender, value: filterPanel.selectedGender"></select><br> -->
 		Gender: <br><select data-bind="options: filterPanel.gender, value: filterPanel.selectedGender, optionsCaption:'Choose..'"></select><br><br>
 		Recommended: <br><select data-bind="options: filterPanel.recommended, value: filterPanel.selectedRecommended"></select><br><br>
+		Theme: <br><select data-bind="options: filterPanel.theme, value: filterPanel.selectedTheme, optionsCaption:'Choose..'"></select><br><br>		
 		Actions:<br>
 		<button class="primary">Download CSV</button><br>
 		<button class="secondary">Set Email Alert</button><br>
@@ -25,15 +27,41 @@
 
 	<div class="rightColumn">
 
+		<!-- Review Summary Panel -->	
+		<div class="SummaryPanelCard">
+			<div style="border-right: solid thin #666; flex: 1; text-align: center;" class="SummaryPanelCardItem">
+				<span class="reviewCount" data-bind="text:mydataFiltered().length"></span>
+				<br>
+				<span style="color: #666; font-size: 24px;" >reviews</span>
+			</div>
+			<div style="flex: 5;" class="tableStyles SummaryPanelCardItem">
+				<div style="margin-left:20px;">
+					<!-- ko foreach: tableData -->
+					<div style="display: flex; flex-direction: row">
+						<div style="width: 250px;" data-bind="text:rowHeading"></div>
+						<!-- ko foreach: values -->
+						<div style="text-align: center; flex: 1;" data-bind="text:$data"></div>
+						<!-- /ko -->
+					</div>
+					<!-- /ko -->
+				</div>
+			</div>
+		</div>	
+
 		<!-- Feed of reviews -->
 		<div data-bind="foreach: mydataFiltered">
 			<div class="reviewCard">
 
 				<div class="reviewHeading">
-					<i style="color: #888; margin-right: 10px;" data-bind="css: {fa: true, 'fa-male': Gender = 'Male', 'fa-female': Gender = 'Female'}"></i>
-					<span data-bind="text: Role"></span> at <span data-bind="text: CompanyName"></span>
-					<br>
-					<span style="font-style: italic; font-size: 14px; color: #0066cc;" data-bind="text: ExperienceSummary"></span><br><br>
+					<div style="padding-bottom: 10px;">
+						<i style="color: #888; margin-right: 10px;" data-bind="css: {fa: true, 'fa-male': Gender === 'Male', 'fa-female': Gender === 'Female'}"></i>
+						<span data-bind="text: SubClassification"></span>
+						<span> at </span>
+						<span data-bind="text: CompanyName"></span>
+					</div>
+					<div style="margin-bottom: 10px;">
+						<span style="margin-bottom: 10px; font-size: 16px; color: #0066cc;" data-bind="text: ExperienceSummary"></span>
+					</div>
 				</div>
 
 				<div class="reviewSubContainer">
@@ -58,12 +86,13 @@
 
 						<!-- <b>Recommened:</b> <span data-bind="text: Recommended"></span><br><br> -->
 					</div>				
-					<div style="flex: 1" class="reviewSubBox">
-						<b>Pros:</b><br><span data-bind="text: Pros"></span>
-						<!-- <span style="font-weight: 14px; color: #0066cc;" data-bind="text: ExperienceSummary"></span><br><br> -->
-					</div>
-					<div style="flex: 1" class="reviewSubBox">
-						<b>Cons:</b><br><span data-bind="text: Cons"></span>
+					<div style="flex: 2" class="stackVertical reviewSubBox">
+						<div>
+							<b>Pros:</b><br><span data-bind="text: Pros"></span>
+						</div><br>
+						<div>
+							<b>Cons:</b><br><span data-bind="text: Cons"></span>
+						</div>
 					</div>	
 
 				</div>

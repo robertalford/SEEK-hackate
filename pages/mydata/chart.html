@@ -1,21 +1,29 @@
 		<div class="chartData">
-
+			<h2>How
+				<span class="facet" data-bind="text: globallySetCompany"></span>
+				compares for
+				<span class="facet" data-bind="text: filters.find(f=>f.filterField === currentFilter()).description"></span>
+				<!-- ko if: roleFamily -->
+				among people in
+				<span class="facet" data-bind="text: roleFamily"></span>
+				<!-- /ko -->
+			</h2>
+			
 			<div class="chartmenu">
 				<ul>
-					<li><a href="" class="overall">Overall rating</a></li>
-					<li><a href="" class="career">Career</a></li>
-					<li><a href="" class="balance">Work life balance</a></li>
-					<li><a href="" class="diversity active">Diversity</a></li>
-					<li><a href="" class="environment">Working environment</a></li>
-					<li><a href="" class="salary">Salary</a></li>
-					<li><a href="" class="management">Manage- ment</a></li>
-					<li><a href="" class="benefits">Benefits & perks</a></li>
-					<li><a href="" class="all">All</a></li>
+					<!-- ko foreach: filters -->
+					<li><a href="" data-bind="click: () => {$parent.currentFilter(filterField); $parent.showAll(false)}, text: description, attr: {class: fieldClass}">Overall rating</a></li>
+					<!-- /ko -->
+
+					<li><a href="" class="all" data-bind="click: () => showAll(true)">All</a></li>
 					<li><a href="" class="explore">Explore</a></li>
 				</ul>
 			</div>
 
-			<h2>How <span class="facet">NAB</span> compares for <span class="facet">diversity</span> among people in <span class="facet">Sales</span>:</h2>
-			<div id="wrapper"></div>
+			<div id="wrapper" data-bind="visible: !showAll()"></div>
 
+			<div data-bind="visible: showAll()">
+					<!-- Heatmap -->
+				<heatmap />
+			</div>
 		</div>

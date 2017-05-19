@@ -1,6 +1,4 @@
-
-
-<h1 data-bind="text: 'Summary - ' + (filterPanel.selectedRole() || 'All Roles')"></h1>
+<h1>Summary</h1>
 
 		<!-- Role stats -->
         <div id="dashboard" class="roleStats">
@@ -93,9 +91,8 @@
 
 	<div class="rightColumn">
 		<!-- Chart -->
-		<chart />
-		<!-- Heatmap -->
-		<heatmap />
+		<chart params="data: mydataFiltered, roleFamily: filterPanel.selectedRoleFamily" />
+
 	</div>
 
 </div>
