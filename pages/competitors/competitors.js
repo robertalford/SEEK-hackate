@@ -152,20 +152,18 @@ define(['knockout', 'data/data'], function (ko, data) {
         	var rolesByRoleCount = this.getReviewsByRoleCount();
         	var result = [];
         	var n = 5;
-        	var i = 0;
         	for (var key in rolesByRoleCount) {
-        		if(i == n){
-        			return result;
-        		}
         		result.push({
         			description: key,
         			revCount: rolesByRoleCount[key].revCount,
         			overAllRating: rolesByRoleCount[key].overAllRating
         		});
-        		i++;
         	}
-        	console.log(result);
-        	return result;
+
+            result.sort((a,b) => b.revCount - a.revCount);
+
+
+        	return result.slice(0, n);
         });
 
 
