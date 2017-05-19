@@ -28,12 +28,21 @@
 		<!-- Review Summary Panel -->	
 		<div class="SummaryPanelCard">
 			<div style="border-right: solid thin #666; flex: 1; text-align: center;" class="SummaryPanelCardItem">
-				<span class="reviewCount">74</span>
+				<span class="reviewCount" data-bind="text:mydataFiltered().length"></span>
 				<br>
 				<span style="color: #666; font-size: 24px;" >reviews</span>
 			</div>
 			<div style="flex: 5;" class="tableStyles SummaryPanelCardItem">
-
+				<div style="margin-left:20px;">
+					<!-- ko foreach: tableData -->
+					<div style="display: flex; flex-direction: row">
+						<div style="width: 250px;" data-bind="text:rowHeading"></div>
+						<!-- ko foreach: values -->
+						<div style="text-align: center; flex: 1;" data-bind="text:$data"></div>
+						<!-- /ko -->
+					</div>
+					<!-- /ko -->
+				</div>
 			</div>
 		</div>	
 

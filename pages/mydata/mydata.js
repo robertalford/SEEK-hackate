@@ -10,13 +10,14 @@ define(['knockout', 'data/data'], function (ko, data) {
 		this.mydata = ko.observable(data.mydata);
 
 		this.tableData = [
-			{rowHeading: 'Overall', values: [0, 5, 1,2,3]},
-			{rowHeading: 'Career Development', values: [0, 5, 1,2,3]},
-			{rowHeading: 'Worklife Balance', values: [0, 5, 1,2,3]},
-			{rowHeading: 'Management', values: [0, 5, 1,2,3]},
-			{rowHeading: 'Benefits & Perks', values: [0, 5, 1,2,3]},
-			{rowHeading: 'Diverstiy', values: [0, 5, 1,2,3]},
-			{rowHeading: 'Recommend working there', values: [0, 5, 1,2,3]}
+			{rowHeading: '', values: ['You', 'Aus', 'Comp 1','Comp 2', 'Comp 3']},
+			{rowHeading: 'Overall', values: [4, 3, 4, 2,3]},
+			{rowHeading: 'Career Development', values: [4, 4, 4,2,3]},
+			{rowHeading: 'Worklife Balance', values: [4, 3, 2,2,3]},
+			{rowHeading: 'Management', values: [5, 4, 3,1,3]},
+			{rowHeading: 'Benefits & Perks', values: [3, 3, 4,2,5]},
+			{rowHeading: 'Diverstiy', values: [4, 3, 2,3,4]},
+			{rowHeading: 'Recommend working there', values: ['65%', '55%', '13%', '70%','64%']}
 		]
 
 		this.filterPanel = {
