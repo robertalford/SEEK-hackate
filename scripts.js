@@ -11,22 +11,22 @@ var selectedcompanies =
 	[
 		{
 			"company_name": globallySetCompany,
-			"company_id": 432833
+			"company_id": 432303
 		},
 		{
 			"company_name": "AU average",
-			"company_id": 432298
+			"company_id": null
 		},
 		{
-			"company_name": "NAB",
-			"company_id": 432320
+			"company_name": "CBA",
+			"company_id": 432306
 		},
 		{
 			"company_name": "Telstra",
-			"company_id": 432545
+			"company_id": 432298
 		},
 		{
-			"company_name": "Deloitte",
+			"company_name": "Bupa",
 			"company_id": 432746
 		}
 	];

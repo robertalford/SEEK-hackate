@@ -53,7 +53,7 @@ define(['knockout', 'data/data'], function (ko, data) {
 
         this.mydataFiltered = ko.computed(() => {
             return this.mydata().filter(r =>
-                (r.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
+                (r.Classification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
                 (r.Gender === this.filterPanel.selectedGender() || !this.filterPanel.selectedGender()) &&
                 (r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation())
             )

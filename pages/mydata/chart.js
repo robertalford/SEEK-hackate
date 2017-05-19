@@ -97,13 +97,13 @@ define(['knockout', 'data/data'], function (ko, data) {
                 .duration(1000)
                 .attr("width", function (d) { return xscale(d); });
 
-            var transitext = d3.select('#bars')
-                .selectAll('text')
-                .data(values)
-                .enter()
-                .append('text')
-                .attr({ 'x': function (d) { return xscale(d) - 200; }, 'y': function (d, i) { return yscale(i) + 35; } })
-                .text(function (d) { return d; }).style({ 'fill': '#fff', 'font-size': '14px' });
+            // var transitext = d3.select('#bars')
+            //     .selectAll('text')
+            //     .data(values)
+            //     .enter()
+            //     .append('text')
+            //     .attr({ 'x': function (d) { return xscale(d) - 200; }, 'y': function (d, i) { return yscale(i) + 35; } })
+            //     .text(function (d) { return d; }).style({ 'fill': '#fff', 'font-size': '14px' });
         }
 
 
@@ -118,7 +118,7 @@ define(['knockout', 'data/data'], function (ko, data) {
                 var averagerating = 0;
                 var reviewcount = 0;
                 for (z = 0; z < data.length; z++) {
-                    if (data[z].CompanyId == selectedcompanies[i].company_id) {
+                    if (data[z].CompanyId == selectedcompanies[i].company_id || selectedcompanies[i].company_id == null) {
                         if (data[z][this.currentFilter()] !== 'NA') {
                             averagerating += data[z][this.currentFilter()];
                             reviewcount = reviewcount + 1;
