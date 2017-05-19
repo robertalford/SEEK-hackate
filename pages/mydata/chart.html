@@ -2,20 +2,21 @@
 
 			<div class="chartmenu">
 				<ul>
-					<li><a href="" class="overall" data-bind="click: () => currentFilter('OverallRating')">Overall rating</a></li>
-					<li><a href="" class="career" data-bind="click: () => currentFilter('CareerDevOpp')">Career</a></li>
-					<li><a href="" class="balance" data-bind="click: () => currentFilter('WorklifeBal')">Work life balance</a></li>
-					<li><a href="" class="diversity active" data-bind="click: () => currentFilter('Diversity')">Diversity</a></li>
-					<li><a href="" class="environment" data-bind="click: () => currentFilter('WorkingEnv')">Working environment</a></li>
-					<li><a href="" class="salary" data-bind="click: () => currentFilter('SalaryRating')">Salary</a></li>
-					<li><a href="" class="management" data-bind="click: () => currentFilter('Management')">Manage- ment</a></li>
-					<li><a href="" class="benefits" data-bind="click: () => currentFilter('Benefits')">Benefits & perks</a></li>
+					<!-- ko foreach: filters -->
+					<li><a href="" data-bind="click: () => $parent.currentFilter(filterField), text: description, attr: {class: fieldClass}">Overall rating</a></li>
+					<!-- /ko -->
+
 					<li><a href="" class="all">All</a></li>
 					<li><a href="" class="explore">Explore</a></li>
 				</ul>
 			</div>
 
-			<h2>How <span class="facet">NAB</span> compares for <span class="facet">diversity</span> among people in <span class="facet">Sales</span>:</h2>
+			<h2>How
+				<span class="facet" data-bind="text: globallySetCompany"></span>
+				compares for
+				<span class="facet" data-bind="text: filters.find(f=>f.filterField === currentFilter()).description"></span>
+				among people in
+				<span class="facet" data-bind="text: roleFamily() || 'All'"></span>:</h2>
 			<div id="wrapper"></div>
 
 		</div>
