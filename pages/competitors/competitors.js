@@ -110,6 +110,69 @@ define(['knockout', 'data/data'], function (ko, data) {
         	return salaryRatingAvg;
         });
 
+        this.getReviewsByRoleCount = ko.computed(()=>{
+        	var selectedCompanyNameReviews = this.mydata().filter(r => r.CompanyName === globallySetCompany);
+
+        	var rolesObj = {}
+
+        	//Recorrer el array
+        	//Agregar el rol si no existe en el objeto
+        	//En un array agregar el numero de reviews, el valor de cada review y el promedio
+        	for(var i = 0; i < selectedCompanyNameReviews.length; i++){
+
+        		var curRev = selectedCompanyNameReviews[i];
+        		
+        		//if(inJSON(rolesObj, curRev.Role)){
+        			if(rolesObj.hasOwnProperty(curRev.SubClassification)){
+        			//console.log(curRev.Role);
+        			
+        			rolesObj[curRev.SubClassification].revCount += 1;
+        			rolesObj[curRev.SubClassification].revRatings.push(curRev.OverallRating); 
+        			//console.log(curRev.SubClassification, rolesObj[curRev.SubClassification].revCount);
+        		}else {
+        			//console.log(rolesObj);
+        			rolesObj[curRev.SubClassification] = {};
+        			rolesObj[curRev.SubClassification].revRatings = [];
+        			rolesObj[curRev.SubClassification].revCount = 1;
+        			rolesObj[curRev.SubClassification].revRatings.push(curRev.OverallRating);
+        		}
+        	}
+
+        	
+        	for(k in rolesObj) {
+        		var revRatings = rolesObj[k].revRatings;
+        		var sum = 0;
+        		for(var i = 0; i < revRatings.length; i++){
+        			sum += revRatings[i];
+        		}
+        		var avg = Math.round((sum / revRatings.length)*10) /10;
+        		rolesObj[k].overAllRating = avg;
+        	}
+        	console.log(rolesObj);
+        	return rolesObj;
+
+        });
+
+        this.displayRolesByRoleCount = ko.computed(() => {
+        	var rolesByRoleCount = this.getReviewsByRoleCount();
+        	var result = [];
+        	var n = 5;
+        	var i = 0;
+        	for (var key in rolesByRoleCount) {
+        		if(i == n){
+        			return result;
+        		}
+        		result.push({
+        			description: key,
+        			revCount: rolesByRoleCount[key].revCount,
+        			overAllRating: rolesByRoleCount[key].overAllRating
+        		});
+        		i++;
+        	}
+        	console.log(result);
+        	return result;
+        });
+
 
         this.averageAllCompanyScore = ko.computed(() =>{
         	// if (!this.filterPanel.selectedCompanyName()) {
@@ -211,7 +274,7 @@ define(['knockout', 'data/data'], function (ko, data) {
             	curSum += objectArray[i][fieldToCalculate];
             }
             return Math.round((curSum / objectArray.length) * 10 ) / 10;
-        }
+        }        
 
     }
 });
