@@ -592,7 +592,7 @@ li.menulink:hover {
     perspective: 1200px;
   }
 
-	  .fa-male, .fa-female {
+	  .reviewCard:hover .fa-male,.reviewCard:hover .fa-female {
     -webkit-animation-name: spinner;
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
