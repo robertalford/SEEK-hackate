@@ -25,7 +25,9 @@ define(['knockout', 'data/data'], function (ko, data) {
 			salaryMaxes: salarySteps.slice(1),
 			selectedCompanyName: ko.observable(),
 			selectedRoleFamily: ko.observable(),
+			selectedKeywords: ko.observable("").extend({ratelimit: {method: "notifyWhenChangesStop", timeout: 1000}}),
 			selectedRole: ko.observable(),
+			selectedTheme: ko.observable(),
 			selectedLocation: ko.observable(),
 			selectedGender: ko.observable(),
 			selectedSalaryMin: ko.observable(0),
@@ -40,9 +42,17 @@ define(['knockout', 'data/data'], function (ko, data) {
 			recommended: ['All', 'Recommended', 'Not recommended']
 		};
 
+		this.filterPanel.selectedKeywordsRatelimited = ko.pureComputed(this.filterPanel.selectedKeywords).extend({ratelimit: {method: "notifyWhenChangesStop", timeout: 1000}}),
+
+
 		this.filterPanel.roleFamilies = ko.computed(() => {
 			return uniqueArray(this.mydata().filter(d => 
 				d.CompanyName === globallySetCompany).map(d => d.Classification)).sort()
+		});
+
+		this.filterPanel.theme = ko.computed(() => {
+			return uniqueArray(this.mydata().filter(d => 
+				d.CompanyName === globallySetCompany).map(d => d.Theme1)).sort()
 		});
 
 		this.filterPanel.roles = ko.computed(() => {
@@ -63,7 +73,9 @@ define(['knockout', 'data/data'], function (ko, data) {
 				(r.CompanyName === globallySetCompany) &&
 				(r.Classification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
 				(r.SubClassification === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
+				(getText(r).indexOf(this.filterPanel.selectedKeywordsRatelimited()) !== -1) &&
 				(r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
+				(r.Theme1 === this.filterPanel.selectedTheme() || !this.filterPanel.selectedTheme()) &&
 				(r.Gender === this.filterPanel.selectedGender() || !this.filterPanel.selectedGender()) &&
 				r.SalaryAmt >= this.filterPanel.selectedSalaryMin() * 1000 &&
 				(r.SalaryAmt <= this.filterPanel.selectedSalaryMax() * 1000 || this.filterPanel.selectedSalaryMax() === "200+") &&
@@ -75,3 +87,7 @@ define(['knockout', 'data/data'], function (ko, data) {
 
 	}
 });
+
+function getText(obj) {
+	return obj.Pros + obj.Cons + obj.ExperienceSummary;
+}

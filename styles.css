@@ -318,6 +318,14 @@ i {
 	width: 100%;
 	height: 30px;
 	font-size: 14px;
+	border-radius: 3px;
+}
+
+.filterPanel input {
+	margin-top: 5px;
+	width: 100%;
+	height: 30px;
+	font-size: 14px;
 }
 
 button.primary {

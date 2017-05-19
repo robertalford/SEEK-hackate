@@ -7,6 +7,7 @@
 	<!-- Filter Panel -->
 	<div class="filterPanel">
 <!-- 		Company: <br><select data-bind="options: filterPanel.companyNames, value: filterPanel.selectedCompanyName, optionsCaption:'Choose..'"></select><br><br> -->
+		Keyword Search: <br><input placeholder="Enter search keyword..." data-bind="value: filterPanel.selectedKeywords, valueUpdate: 'keyup'"></input><br><br>		
 		Role Family: <br><select data-bind="options: filterPanel.roleFamilies, value: filterPanel.selectedRoleFamily, optionsCaption:'Choose..'"></select><br><br>		
 		Role Type: <br><select data-bind="options: filterPanel.roles, value: filterPanel.selectedRole, optionsCaption:'Choose..'"></select><br><br>
 		Location: <br><select data-bind="options: filterPanel.location, value: filterPanel.selectedLocation, optionsCaption:'Choose..'"></select><br><br>
@@ -18,6 +19,7 @@
 		<!-- Gender: <br><select data-bind="options: filterPanel.gender, value: filterPanel.selectedGender"></select><br> -->
 		Gender: <br><select data-bind="options: filterPanel.gender, value: filterPanel.selectedGender, optionsCaption:'Choose..'"></select><br><br>
 		Recommended: <br><select data-bind="options: filterPanel.recommended, value: filterPanel.selectedRecommended"></select><br><br>
+		Theme: <br><select data-bind="options: filterPanel.theme, value: filterPanel.selectedTheme, optionsCaption:'Choose..'"></select><br><br>		
 		Actions:<br>
 		<button class="primary">Download CSV</button><br>
 		<button class="secondary">Set Email Alert</button><br>
