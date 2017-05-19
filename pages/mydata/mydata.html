@@ -67,22 +67,28 @@
 				<div class="reviewSubContainer">
 					<div style="flex: 1" class="reviewSubBox">
 						<!-- ko template: {name: "starsMain", data: OverallRating} --><!-- /ko -->
-						<b><span style="padding-left: 5px;">Overall</span></b><br>
+						<b><span style="padding-left: 5px; padding-right: 3px;" data-bind="text: OverallRating"></span>
+						<span>Overall</span></b><br>
 
 						<!-- ko template: {name: "stars", data: CareerDevOpp} --><!-- /ko -->
-						<span style="padding-left: 5px;">Career Development</span><br>
+						<span style="padding-left: 5px; padding-right: 3px;" data-bind="text: CareerDevOpp"></span>
+						<span>Career Development</span><br>
 						
 						<!-- ko template: {name: "stars", data: WorklifeBal} --><!-- /ko -->
-						<span style="padding-left: 5px;">Worklife Balance</span><br>
+						<span style="padding-left: 5px; padding-right: 3px;" data-bind="text: WorklifeBal"></span>
+						<span>Worklife Balance</span><br>
 						
 						<!-- ko template: {name: "stars", data: Management} --><!-- /ko -->
-						<span style="padding-left: 5px;">Management</span><br>
+						<span style="padding-left: 5px; padding-right: 3px;" data-bind="text: Management"></span>
+						<span>Management</span><br>
 						
 						<!-- ko template: {name: "stars", data: Benefits} --><!-- /ko -->
-						<span style="padding-left: 5px;">Benefits & Perks</span><br>
+						<span style="padding-left: 5px; padding-right: 3px;" data-bind="text: Benefits"></span>
+						<span>Benefits & Perks</span><br>
 						
 						<!-- ko template: {name: "stars", data: Diversity} --><!-- /ko -->
-						<span style="padding-left: 5px;">Diversity</span><br>
+						<span style="padding-left: 5px; padding-right: 3px;" data-bind="text: Diversity"></span>
+						<span>Diversity</span><br>
 
 						<!-- <b>Recommened:</b> <span data-bind="text: Recommended"></span><br><br> -->
 					</div>				
