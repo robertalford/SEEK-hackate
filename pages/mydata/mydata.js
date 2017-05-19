@@ -10,7 +10,7 @@ define(['knockout', 'data/data'], function (ko, data) {
 		this.mydata = ko.observable(data.mydata);
 
 		this.tableData = [
-			{rowHeading: '', values: ['You', 'Aus', 'Comp 1','Comp 2', 'Comp 3']},
+			{rowHeading: '', values: ['You', 'All Aus', 'CBA', 'Telstra', 'Bupa']},
 			{rowHeading: 'Overall', values: [4, 3, 4, 2,3]},
 			{rowHeading: 'Career Development', values: [4, 4, 4,2,3]},
 			{rowHeading: 'Worklife Balance', values: [4, 3, 2,2,3]},
@@ -77,8 +77,9 @@ define(['knockout', 'data/data'], function (ko, data) {
 				(r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
 				(r.Theme1 === this.filterPanel.selectedTheme() || !this.filterPanel.selectedTheme()) &&
 				(r.Gender === this.filterPanel.selectedGender() || !this.filterPanel.selectedGender()) &&
-				r.SalaryAmt >= this.filterPanel.selectedSalaryMin() * 1000 &&
-				(r.SalaryAmt <= this.filterPanel.selectedSalaryMax() * 1000 || this.filterPanel.selectedSalaryMax() === "200+") &&
+				((r.SalaryAmt >= this.filterPanel.selectedSalaryMin() * 1000 
+				&&
+				(r.SalaryAmt <= this.filterPanel.selectedSalaryMax() * 1000 || this.filterPanel.selectedSalaryMax() === "200+")) || r.SalaryAmt === "NA") &&
 				(this.filterPanel.selectedRecommended() === "All" || r.Recommended === (this.filterPanel.selectedRecommended() === 'Recommended' ? true : false))
 			)
 

@@ -101,13 +101,14 @@ table, td, tr {
 	display: flex;
 	flex-direction: row;
 	margin-bottom: 15px;
+
 }
 .dashboard-box {
 	flex:1;
 	height: 238px;
 	background: white;
 	float: left;
-	height:300px;
+	height:350px;
 }
 .dashboard-heading {
 	height:40px;
@@ -129,10 +130,10 @@ table, td, tr {
 
 }
 #dashboard-box2{
-	background-color: #ffffb3;	
+	background-color: #FFFFFF;/*#ffffb3;	*/
 }
 #dashboard-box3{
-	background-color: #ffe6f7;
+	background-color: #FFFFFF /*#00AAB2;*/
 	
 }
 #dashboard-box1 .dashboard-heading {
@@ -164,12 +165,37 @@ table, td, tr {
 }*/
 #dashboard-box3 .dashboard-content div.dashboard-details {
 	font-size:10px;
+	color:#CCCCCC;
 }
 #dashboard-box2 .dashboard-heading {
 	background-color: #ffc600;
 	color: white;
 }
+.radial {
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	background:#3F51B5;
+	width:80px;
+	height:80px;
+	padding:15px !important;
+	font-size:1.0em !important;
+	margin:0 0px 0 50px;
+	float:left;
+	color:#FFFFFF!important;
+}
+#dashboard-box2 .clear {
+	clear:both;
+}
+#dashboard-box2 H4 {
+	margin:auto !important;
+	font-size:0.6em;
+	float:right;
+	width: 270px;
+    padding: 15px;
+    font-weight:normal;
 
+}
 .dashboard-content {
 	/*height: 202px;*/
 	color: #0d3880;
@@ -183,7 +209,8 @@ table, td, tr {
 .dashboard-content .frame-box{
 	/*float:left;*/
 	width:40%;	
-	margin:0 auto 5px auto!important;
+	margin: auto !important;
+	margin-top:50px;
 
 }
 #dashboard-box3 .dashboard-heading {
@@ -195,7 +222,10 @@ table, td, tr {
 	width:250px;
 	margin:0 auto;
 }
-
+.dashboard-details {
+	font-size:0.7em !important;
+	color:#333333;
+}
 .dashboard-heading H1{
 	padding:0;
 	margin:auto 0;
@@ -235,7 +265,7 @@ table, td, tr {
 .dashboard-content .reviews-rol {
 	display:block;
 	width:400px;
-	background:#18BFCE;
+	background:#009FD4;
 	padding:5px 0;
 	margin:5px auto;
 }
@@ -401,6 +431,10 @@ button.secondary:hover {
 .reviewHeading {
 	font-size: 18px;
 	margin-bottom: 5px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+
 }
 
 ul {

@@ -53,16 +53,21 @@
 			<div class="reviewCard">
 
 				<div class="reviewHeading">
-					<div style="padding-bottom: 10px;">
-						<span class="person">
-							<i data-bind="css: {fa: true, 'fa-male': Gender === 'Male', 'fa-female': Gender === 'Female'}"></i>
-						</span>
-						<span data-bind="text: SubClassification"></span>
-						<span> at </span>
-						<span data-bind="text: CompanyName"></span>
+					<div style="flex: 4;">	
+						<div style="padding-bottom: 10px;">
+							<span class="person">
+								<i data-bind="css: {fa: true, 'fa-male': Gender === 'Male', 'fa-female': Gender === 'Female'}"></i>
+							</span>
+							<span data-bind="text: SubClassification"></span>
+							<span> at </span>
+							<span data-bind="text: CompanyName"></span>
+						</div>
+						<div style="margin-bottom: 10px;">
+							<span style="margin-bottom: 10px; font-size: 16px; color: #0066cc;" data-bind="text: ExperienceSummary"></span>
+						</div>
 					</div>
-					<div style="margin-bottom: 10px;">
-						<span style="margin-bottom: 10px; font-size: 16px; color: #0066cc;" data-bind="text: ExperienceSummary"></span>
+					<div style="font-size: 14px; color: #aaa; font-style: italic; flex: 1; text-align: right;">	
+						<span data-bind="text: DateReviewCreated"></span>
 					</div>
 				</div>
 

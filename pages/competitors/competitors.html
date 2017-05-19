@@ -7,7 +7,7 @@
 	        		<div>
 	        			REVIEWS
 	        		</div>
-	        		<div class="dashboard-content">
+	        		<div style="margin-top: 40px;" class="dashboard-content">
 	        		<span  data-bind="text: getReviewCount"></span>
 	        			
 	        			<!--<h5>(25 new)</h5>-->
@@ -31,22 +31,15 @@
 	        			
 
 	        			<div class="radial" >
-	        			<div id="progress" 
-							     data-percentage="60" 
-							     data-track-width="12" 
-							     data-track-colour="555555" 
-							     data-fill-colour="00C0FF" 
-							     data-text-colour="00C0FF" 
-							     data-stroke-colour="FFFFFF" 
-							     data-stroke-spacing="4"
-							     data-bind = "attr: {'data-percentage': 34}"> 
-							</div> 
-	        				<span class="" data-bind="text: recomendWorking"></span>
+	        			
+	        				<span class="" data-bind="text: recomendWorking"></span>% 
 	        			</div>
-	        			<div class="averages" data-bind="text: salaryRating">
-	        				<span class=""></span>
+	        			<h4>Will recommend working here</h4>
+	        			<div class="clear"></div>
+	        			<div class="radial">
+	        				<span class="" data-bind="text: salaryRating"></span>%
 	        			</div>
-
+	        			<h4>Rates the salaray fair or high</h4>
 	        		</div>
 	        	</div>
             </div>
