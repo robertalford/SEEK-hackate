@@ -1,5 +1,5 @@
 
-<h1 data-bind="text: 'Reviews - ' + (filterPanel.selectedRole() || 'All Roles')"></h1>
+<h1>Reviews</h1>
 
 <!-- Container -->
 <div class="pageContainer">
@@ -8,7 +8,7 @@
 	<div class="filterPanel">
 <!-- 		Company: <br><select data-bind="options: filterPanel.companyNames, value: filterPanel.selectedCompanyName, optionsCaption:'Choose..'"></select><br><br> -->
 		Role Family: <br><select data-bind="options: filterPanel.roleFamilies, value: filterPanel.selectedRoleFamily, optionsCaption:'Choose..'"></select><br><br>		
-		Role: <br><select data-bind="options: filterPanel.roles, value: filterPanel.selectedRole, optionsCaption:'Choose..'"></select><br><br>
+		Role Type: <br><select data-bind="options: filterPanel.roles, value: filterPanel.selectedRole, optionsCaption:'Choose..'"></select><br><br>
 		Location: <br><select data-bind="options: filterPanel.location, value: filterPanel.selectedLocation, optionsCaption:'Choose..'"></select><br><br>
 		Salary: <br>
 		<span class='salaryRow'>
@@ -25,15 +25,25 @@
 
 	<div class="rightColumn">
 
+		<!-- Review Summary Panel -->	
+		<div class="SummaryPanel">
+			Summary Panel
+		</div>	
+
 		<!-- Feed of reviews -->
 		<div data-bind="foreach: mydataFiltered">
 			<div class="reviewCard">
 
 				<div class="reviewHeading">
-					<i style="color: #888; margin-right: 10px;" data-bind="css: {fa: true, 'fa-male': Gender = 'Male', 'fa-female': Gender = 'Female'}"></i>
-					<span data-bind="text: Role"></span> at <span data-bind="text: CompanyName"></span>
-					<br>
-					<span style="font-style: italic; font-size: 14px; color: #0066cc;" data-bind="text: ExperienceSummary"></span><br><br>
+					<div style="padding-bottom: 10px;">
+						<i style="color: #888; margin-right: 10px;" data-bind="css: {fa: true, 'fa-male': Gender === 'Male', 'fa-female': Gender === 'Female'}"></i>
+						<span data-bind="text: SubClassification"></span>
+						<span> at </span>
+						<span data-bind="text: CompanyName"></span>
+					</div>
+					<div style="margin-bottom: 10px;">
+						<span style="margin-bottom: 10px; font-size: 16px; color: #0066cc;" data-bind="text: ExperienceSummary"></span>
+					</div>
 				</div>
 
 				<div class="reviewSubContainer">
