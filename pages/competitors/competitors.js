@@ -38,7 +38,7 @@ define(['knockout', 'data/data'], function (ko, data) {
 
         this.filterPanel.roleFamilies = ko.computed(() => {
             return uniqueArray(this.mydata().filter(d => 
-                d.CompanyName === globallySetCompany).map(d => d.SubClassification)).sort()
+                d.CompanyName === globallySetCompany).map(d => d.Classification)).sort()
         });
 
         this.filterPanel.location = ko.computed(() => {
@@ -54,7 +54,7 @@ define(['knockout', 'data/data'], function (ko, data) {
         this.mydataFiltered = ko.computed(() => {
             return this.mydata().filter(r =>
                 (r.CompanyName === globallySetCompany) &&
-                (r.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
+                (r.Classification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
                 (r.RoleClean === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
                 (r.Gender === this.filterPanel.selectedGender() || !this.filterPanel.selectedGender()) &&
                 (r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
