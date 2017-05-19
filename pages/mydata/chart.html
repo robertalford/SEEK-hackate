@@ -1,5 +1,11 @@
 		<div class="chartData">
-
+			<h2>How
+				<span class="facet" data-bind="text: globallySetCompany"></span>
+				compares for
+				<span class="facet" data-bind="text: filters.find(f=>f.filterField === currentFilter()).description"></span>
+				among people in
+				<span class="facet" data-bind="text: roleFamily() || 'All'"></span>:</h2>
+			
 			<div class="chartmenu">
 				<ul>
 					<!-- ko foreach: filters -->
@@ -11,12 +17,7 @@
 				</ul>
 			</div>
 
-			<h2>How
-				<span class="facet" data-bind="text: globallySetCompany"></span>
-				compares for
-				<span class="facet" data-bind="text: filters.find(f=>f.filterField === currentFilter()).description"></span>
-				among people in
-				<span class="facet" data-bind="text: roleFamily() || 'All'"></span>:</h2>
 			<div id="wrapper"></div>
+
 
 		</div>
