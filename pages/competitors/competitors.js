@@ -102,6 +102,14 @@ define(['knockout', 'data/data'], function (ko, data) {
 
         });
 
+        this.salaryRating = ko.computed(()=>{
+
+        	var selectedCompanyNameReviews = this.mydata().filter(r => r.CompanyName === globallySetCompany);
+        	var salaryRatingAvg = calculateSalaryRating(selectedCompanyNameReviews);
+
+        	return salaryRatingAvg;
+        });
+
 
         this.averageAllCompanyScore = ko.computed(() =>{
         	// if (!this.filterPanel.selectedCompanyName()) {
@@ -150,7 +158,30 @@ define(['knockout', 'data/data'], function (ko, data) {
         	return companyScores;
 
         });
-        //console.log(this.averageAllCompanyScore);
+        
+        //Calculate Salary rating
+        function calculateSalaryRating(reviewsArray){
+        	var revSalGood = 0;
+        	var revSalBad = 0;
+        	var totalRec = 0;
+
+        	for(var i = 0; i < reviewsArray.length; i++){
+        		var curRev = reviewsArray[i];
+
+        		if(curRev.SalaryRating === 'fair' || curRev.SalaryRating === 'generous') {// below, fair, generous
+        			revSalGood += 1;
+        		}else if(curRev.SalaryRating === 'below') {
+        			revSalBad += 1;
+        		}
+
+        		totalRec += 1;
+        	}
+
+        	var avg = Math.floor((revSalGood / totalRec) * 100);
+        	
+        	return avg;
+        }
+
         //GET THE % OF PEOPLE RECOMENDING WORKING THERE
         function getRecomendWorking(reviewArray){
         	var recYes = 0;
