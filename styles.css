@@ -145,9 +145,9 @@ body {
 	
 }
 .dashboard-content .frame-box{
-	float:left;
+	/*float:left;*/
 	width:40%;	
-	margin:0 0 5px 0!important;
+	margin:0 auto 5px auto!important;
 
 }
 #dashboard-box3 .dashboard-heading {

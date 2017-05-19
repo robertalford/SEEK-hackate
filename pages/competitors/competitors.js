@@ -53,14 +53,9 @@ define(['knockout', 'data/data'], function (ko, data) {
 
         this.mydataFiltered = ko.computed(() => {
             return this.mydata().filter(r =>
-                (r.CompanyName === globallySetCompany) &&
-                (r.Classification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
-                (r.RoleClean === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
+                (r.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
                 (r.Gender === this.filterPanel.selectedGender() || !this.filterPanel.selectedGender()) &&
-                (r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
-                r.AnnualisedSalary >= this.filterPanel.selectedSalaryMin() * 1000 &&
-                (r.AnnualisedSalary <= this.filterPanel.selectedSalaryMax() * 1000 || this.filterPanel.selectedSalaryMax() === "200+") &&
-                (this.filterPanel.selectedRecommended() === "All" || r.Recommended === (this.filterPanel.selectedRecommended() === 'Recommended' ? true : false))
+                (r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation())
             )
         });
 
@@ -91,6 +86,15 @@ define(['knockout', 'data/data'], function (ko, data) {
             var overAllScore = doAverage(selectedCompanyNameReviews,"OverallRating");
             return  overAllScore;       
             
+        });
+
+        this.recomendWorking = ko.computed(() =>{
+
+        	var selectedCompanyNameReviews = this.mydata().filter(r => r.CompanyName === globallySetCompany);
+        	var recommend = getRecomendWorking(selectedCompanyNameReviews);
+
+        	return recommend;
+
         });
 
 
@@ -142,13 +146,35 @@ define(['knockout', 'data/data'], function (ko, data) {
 
         });
         //console.log(this.averageAllCompanyScore);
+        //GET THE % OF PEOPLE RECOMENDING WORKING THERE
+        function getRecomendWorking(reviewArray){
+        	var recYes = 0;
+        	var recNo = 0;
+        	var totalRec = 0;
+
+        	for(var i = 0; i < reviewArray.length; i++){
+        		var curRev = reviewArray[i];
+        		if(curRev.Recommended === "FALSE"){
+        			recNo += 1;
+        		}else if(curRev.Recommended === "TRUE"){
+        			recYes += 1;
+        		}
+        		totalRec += 1;
+        		
+        	}
+
+        	var recommendWorkingHere = Math.floor((recYes / totalRec) * 100);
+        	
+        	return recommendWorkingHere;
+        } 
+
         function doAverage(objectArray,fieldToCalculate){
         	var curSum = 0;
             for (var i=0; i < objectArray.length; i++){
             	
             	curSum += objectArray[i][fieldToCalculate];
             }
-            return curSum / objectArray.length;
+            return Math.round((curSum / objectArray.length) * 10 ) / 10;
         }
 
     }

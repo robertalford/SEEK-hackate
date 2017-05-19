@@ -7,6 +7,30 @@ requirejs.config({
 
 var globallySetCompany = 'ANZ';
 
+var selectedcompanies =
+	[
+		{
+			"company_name": globallySetCompany,
+			"company_id": 432833
+		},
+		{
+			"company_name": "AU average",
+			"company_id": 432298
+		},
+		{
+			"company_name": "NAB",
+			"company_id": 432320
+		},
+		{
+			"company_name": "Telstra",
+			"company_id": 432545
+		},
+		{
+			"company_name": "Deloitte",
+			"company_id": 432746
+		}
+	];
+
 require(['knockout'], function (ko) {
 	class NavigationViewModel {
 		constructor() {
