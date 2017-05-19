@@ -412,21 +412,21 @@ li.menulink:hover {
 }
 
 	.chartData h2 {
-		padding: 20px 0 30px 20px; 
+		padding: 20px 0 0; 
+		text-align: center;
 	}
 	
 	.chartData h2 .facet {
 		color: #B41782;
-		font-size: 120%; 
+		font-size: 120%;
 	}
 	
 	.chartmenu {
-		float: right;
 		height: 50px;
 		width: 514px;
 		font-size: 9px;
 		padding: 7px;
-		margin-top: 35px;
+		margin: 0 auto 30px;
 	}
 
 	.chartmenu ul {
