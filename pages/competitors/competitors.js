@@ -53,14 +53,9 @@ define(['knockout', 'data/data'], function (ko, data) {
 
         this.mydataFiltered = ko.computed(() => {
             return this.mydata().filter(r =>
-                (r.CompanyName === globallySetCompany) &&
                 (r.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
-                (r.RoleClean === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
                 (r.Gender === this.filterPanel.selectedGender() || !this.filterPanel.selectedGender()) &&
-                (r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
-                r.AnnualisedSalary >= this.filterPanel.selectedSalaryMin() * 1000 &&
-                (r.AnnualisedSalary <= this.filterPanel.selectedSalaryMax() * 1000 || this.filterPanel.selectedSalaryMax() === "200+") &&
-                (this.filterPanel.selectedRecommended() === "All" || r.Recommended === (this.filterPanel.selectedRecommended() === 'Recommended' ? true : false))
+                (r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation())
             )
         });
 
