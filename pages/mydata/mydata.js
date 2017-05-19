@@ -77,8 +77,9 @@ define(['knockout', 'data/data'], function (ko, data) {
 				(r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
 				(r.Theme1 === this.filterPanel.selectedTheme() || !this.filterPanel.selectedTheme()) &&
 				(r.Gender === this.filterPanel.selectedGender() || !this.filterPanel.selectedGender()) &&
-				r.SalaryAmt >= this.filterPanel.selectedSalaryMin() * 1000 &&
-				(r.SalaryAmt <= this.filterPanel.selectedSalaryMax() * 1000 || this.filterPanel.selectedSalaryMax() === "200+") &&
+				((r.SalaryAmt >= this.filterPanel.selectedSalaryMin() * 1000 
+				&&
+				(r.SalaryAmt <= this.filterPanel.selectedSalaryMax() * 1000 || this.filterPanel.selectedSalaryMax() === "200+")) || r.SalaryAmt === "NA") &&
 				(this.filterPanel.selectedRecommended() === "All" || r.Recommended === (this.filterPanel.selectedRecommended() === 'Recommended' ? true : false))
 			)
 
