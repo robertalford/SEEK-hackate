@@ -107,10 +107,6 @@ define(['knockout', 'data/data'], function (ko, data) {
                 .text(function (d) { return d; }).style({ 'fill': '#fff', 'font-size': '14px' });
 
             chartExists = true;
-
-
-
-
         }
 
 
@@ -126,8 +122,10 @@ define(['knockout', 'data/data'], function (ko, data) {
                 var reviewcount = 0;
                 for (z = 0; z < data.length; z++) {
                     if (data[z].CompanyId == selectedcompanies[i].company_id) {
-                        averagerating += data[z][this.currentFilter()];
-                        reviewcount = reviewcount + 1;
+                        if (data[z][this.currentFilter()] !== 'NA') {
+                            averagerating += data[z][this.currentFilter()];
+                            reviewcount = reviewcount + 1;
+                        }
                     }
                 }
                 averagerating = reviewcount === 0 ? 0 : averagerating / reviewcount;
@@ -137,6 +135,18 @@ define(['knockout', 'data/data'], function (ko, data) {
 
             return values;
         });
+
+        this.filters = [
+            { fieldClass: "overall", filterField: 'OverallRating', description: 'Overall rating' },
+            { fieldClass: "career", filterField: 'CareerDevOpp', description: 'Career' },
+            { fieldClass: "balance", filterField: 'WorklifeBal', description: 'Work life balance' },
+            { fieldClass: "diversity", filterField: 'Diversity', description: 'Diversity' },
+            { fieldClass: "environment", filterField: 'WorkingEnv', description: 'Working environment' },
+            { fieldClass: "management", filterField: 'Management', description: 'Manage- ment' },
+            { fieldClass: "benefits", filterField: 'Benefits', description: 'Benefits & perks' }
+        ];
+
+        this.roleFamily = params.roleFamily;
 
         setTimeout(() => updateChart(chartValues()), 0);
         chartValues.subscribe(updateChart);
