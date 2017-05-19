@@ -129,10 +129,10 @@ table, td, tr {
 
 }
 #dashboard-box2{
-	background-color: #ffffb3;	
+	background-color: #FFFFFF;/*#ffffb3;	*/
 }
 #dashboard-box3{
-	background-color: #ffe6f7;
+	background-color: #FFFFFF /*#00AAB2;*/
 	
 }
 #dashboard-box1 .dashboard-heading {
@@ -164,12 +164,37 @@ table, td, tr {
 }*/
 #dashboard-box3 .dashboard-content div.dashboard-details {
 	font-size:10px;
+	color:#CCCCCC;
 }
 #dashboard-box2 .dashboard-heading {
 	background-color: #ffc600;
 	color: white;
 }
+.radial {
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	background:#3F51B5;
+	width:70px;
+	height:70px;
+	padding:15px !important;
+	font-size:1.2em !important;
+	margin:0 10px 0 50px;
+	float:left;
+	color:#FFFFFF!important;
+}
+#dashboard-box2 .clear {
+	clear:both;
+}
+#dashboard-box2 H4 {
+	margin:auto !important;
+	font-size:0.6em;
+	float:right;
+	width: 270px;
+    padding: 15px;
+    font-weight:normal;
 
+}
 .dashboard-content {
 	/*height: 202px;*/
 	color: #0d3880;
@@ -195,7 +220,10 @@ table, td, tr {
 	width:250px;
 	margin:0 auto;
 }
-
+.dashboard-details {
+	font-size:0.7em !important;
+	color:#333333;
+}
 .dashboard-heading H1{
 	padding:0;
 	margin:auto 0;
@@ -235,7 +263,7 @@ table, td, tr {
 .dashboard-content .reviews-rol {
 	display:block;
 	width:400px;
-	background:#18BFCE;
+	background:#009FD4;
 	padding:5px 0;
 	margin:5px auto;
 }
