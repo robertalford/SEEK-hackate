@@ -101,13 +101,14 @@ table, td, tr {
 	display: flex;
 	flex-direction: row;
 	margin-bottom: 15px;
+
 }
 .dashboard-box {
 	flex:1;
 	height: 238px;
 	background: white;
 	float: left;
-	height:300px;
+	height:350px;
 }
 .dashboard-heading {
 	height:40px;
@@ -175,11 +176,11 @@ table, td, tr {
 	-moz-border-radius: 50%;
 	border-radius: 50%;
 	background:#3F51B5;
-	width:70px;
-	height:70px;
+	width:80px;
+	height:80px;
 	padding:15px !important;
-	font-size:1.2em !important;
-	margin:0 10px 0 50px;
+	font-size:1.0em !important;
+	margin:0 0px 0 50px;
 	float:left;
 	color:#FFFFFF!important;
 }
@@ -208,7 +209,8 @@ table, td, tr {
 .dashboard-content .frame-box{
 	/*float:left;*/
 	width:40%;	
-	margin:0 auto 5px auto!important;
+	margin: auto !important;
+	margin-top:50px;
 
 }
 #dashboard-box3 .dashboard-heading {
