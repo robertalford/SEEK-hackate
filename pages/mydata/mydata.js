@@ -5,8 +5,19 @@ define(['knockout', 'data/data'], function (ko, data) {
 
 	const salarySteps = [0, 30, 40, 50, 60, 70, 80, 100, 120, 150, 200, "200+"]
 
+
 	return function ViewModel(params) {
 		this.mydata = ko.observable(data.mydata);
+
+		this.tableData = [
+			{rowHeading: 'Overall', values: [0, 5, 1,2,3]},
+			{rowHeading: 'Career Development', values: [0, 5, 1,2,3]},
+			{rowHeading: 'Worklife Balance', values: [0, 5, 1,2,3]},
+			{rowHeading: 'Management', values: [0, 5, 1,2,3]},
+			{rowHeading: 'Benefits & Perks', values: [0, 5, 1,2,3]},
+			{rowHeading: 'Diverstiy', values: [0, 5, 1,2,3]},
+			{rowHeading: 'Recommend working there', values: [0, 5, 1,2,3]}
+		]
 
 		this.filterPanel = {
 			salaryMins: salarySteps.slice(0, salarySteps.length - 1),
