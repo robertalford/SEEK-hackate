@@ -576,12 +576,12 @@ li.menulink:hover {
     from {
       -moz-transform: rotateY(0deg);
       -ms-transform: rotateY(0deg);
-      transform: rotateY(0deg);
+      transform: rotateY(0deg) scale(1.5);
     }
     to {
       -moz-transform: rotateY(-360deg);
       -ms-transform: rotateY(-360deg);
-      transform: rotateY(-360deg);
+      transform: rotateY(-360deg) scale(1.5);
     }
   }
 
@@ -592,7 +592,11 @@ li.menulink:hover {
     perspective: 1200px;
   }
 
-	  .reviewCard:hover .fa-male,.reviewCard:hover .fa-female {
+	.reviewHeading .person {
+		transition: all .2s ease-in-out;
+	}
+
+	.reviewCard:hover .fa-male,.reviewCard:hover .fa-female {
     -webkit-animation-name: spinner;
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
@@ -607,4 +611,5 @@ li.menulink:hover {
     -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
     transform-style: preserve-3d;
+		transform: scale(1.5);
   }
