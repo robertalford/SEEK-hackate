@@ -321,6 +321,14 @@ i {
 	border-radius: 3px;
 }
 
+.fa-male {
+	color: #4590f9;
+}
+
+.fa-female {
+	color: #f971b7;
+}
+
 .filterPanel input {
 	margin-top: 5px;
 	width: 100%;
