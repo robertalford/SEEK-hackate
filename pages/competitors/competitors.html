@@ -30,7 +30,20 @@
 	        			
 	        			
 
-	        			<div class="averages" data-bind="text: recomendWorking">
+	        			<div class="radial" >
+	        			<div id="progress" 
+							     data-percentage="60" 
+							     data-track-width="12" 
+							     data-track-colour="555555" 
+							     data-fill-colour="00C0FF" 
+							     data-text-colour="00C0FF" 
+							     data-stroke-colour="FFFFFF" 
+							     data-stroke-spacing="4"
+							     data-bind = "attr: {'data-percentage': 34}"> 
+							</div> 
+	        				<span class="" data-bind="text: recomendWorking"></span>
+	        			</div>
+	        			<div class="averages" data-bind="text: salaryRating">
 	        				<span class=""></span>
 	        			</div>
 
@@ -42,12 +55,16 @@
 	        		<div>
 	        			TOP REVIEWERS
 	        		</div>
-	        		<div class="dashboard-content top-reviews">
-	        			<div class="reviews-rol sales">Sales (226): 3.2</div>
-	        			<div class="reviews-rol accountant">Accountant(102): 2.8</div>
-	        			<div class="reviews-rol developers ">Developers(84): 3.8</div>
-	        			<div class="dashboard-details">(Click Role for Details)</div>
+	        		<div class="dashboard-content top-reviews" data-bind="foreach: displayRolesByRoleCount">
+	        			<div class="reviews-rol">
+	        				<span data-bind="text: description"></span>
+	        				(<span data-bind="text: revCount"></span>)
+	        				:<span data-bind="text: overAllRating"></span>
+
+	        			</div>        			
+	        			
 	        		</div>
+	        		<div class="dashboard-details">(Click Role for Details)</div>
 	        	</div>
             </div>
         </div>
@@ -84,5 +101,87 @@
 	<span data-bind="foreach: [0,1,2,3,4]">
 		<i data-bind="css: {fa: true, 'fa-star': $data < $parent, 'fa-star-o': $data >= $parent }"></i>
 	</span>
+</script>
+
+<script type="text/javascript">
+var wrapper = document.getElementById('progress');
+var start = 0;
+var end = parseFloat(wrapper.dataset.percentage);
+
+var colours = {
+  fill: '#' + wrapper.dataset.fillColour,
+  track: '#' + wrapper.dataset.trackColour,
+  text: '#' + wrapper.dataset.textColour,
+  stroke: '#' + wrapper.dataset.strokeColour,
+}
+
+var radius = 100;
+var border = wrapper.dataset.trackWidth;
+var strokeSpacing = wrapper.dataset.strokeSpacing;
+var endAngle = Math.PI * 2;
+var formatText = d3.format('.0%');
+var boxSize = radius * 2;
+var count = end;
+var progress = start;
+var step = end < start ? -0.01 : 0.01;
+
+//Define the circle
+var circle = d3.svg.arc()
+  .startAngle(0)
+  .innerRadius(radius)
+  .outerRadius(radius - border);
+
+//setup SVG wrapper
+var svg = d3.select(wrapper)
+  .append('svg')
+  .attr('width', boxSize)
+  .attr('height', boxSize);
+
+// ADD Group container
+var g = svg.append('g')
+  .attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
+
+//Setup track
+var track = g.append('g').attr('class', 'radial-progress');
+track.append('path')
+  .attr('class', 'radial-progress__background')
+  .attr('fill', colours.track)
+  .attr('stroke', colours.stroke)
+  .attr('stroke-width', strokeSpacing + 'px')
+  .attr('d', circle.endAngle(endAngle));
+
+//Add colour fill
+var value = track.append('path')
+  .attr('class', 'radial-progress__value')
+  .attr('fill', colours.fill)
+  .attr('stroke', colours.stroke)
+  .attr('stroke-width', strokeSpacing + 'px');
+
+//Add text value
+var numberText = track.append('text')
+  .attr('class', 'radial-progress__text')
+  .attr('fill', colours.text)
+  .attr('text-anchor', 'middle')
+  .attr('dy', '.5rem');
+
+function update(progress) {
+  //update position of endAngle
+  value.attr('d', circle.endAngle(endAngle * progress));
+  //update text value
+  numberText.text(formatText(progress));
+} 
+
+(function iterate() {
+  //call update to begin animation
+  update(progress);
+  if (count > 0) {
+    //reduce count till it reaches 0
+    count--;
+    //increase progress
+    progress += step;
+    //Control the speed of the fill
+    setTimeout(iterate, 10);
+  }
+})();
 </script>
 
