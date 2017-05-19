@@ -3,8 +3,11 @@
 				<span class="facet" data-bind="text: globallySetCompany"></span>
 				compares for
 				<span class="facet" data-bind="text: filters.find(f=>f.filterField === currentFilter()).description"></span>
+				<!-- ko if: roleFamily -->
 				among people in
-				<span class="facet" data-bind="text: roleFamily() || 'All'"></span>:</h2>
+				<span class="facet" data-bind="text: roleFamily"></span>
+				<!-- /ko -->
+			</h2>
 			
 			<div class="chartmenu">
 				<ul>
