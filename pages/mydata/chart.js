@@ -1,8 +1,7 @@
 define(['knockout', 'data/data'], function (ko, data) {
-    var chartExists = false;
     return function ViewModel(params) {
 
-        function updateChart(values) {
+        function updateChart(values, chartExists) {
             //split categories into separate array -- chart to be refactored to read straight from source    
             var categories = [''];
             for (i = 0; i < selectedcompanies.length; i++) {
@@ -105,8 +104,6 @@ define(['knockout', 'data/data'], function (ko, data) {
                 .append('text')
                 .attr({ 'x': function (d) { return xscale(d) - 200; }, 'y': function (d, i) { return yscale(i) + 35; } })
                 .text(function (d) { return d; }).style({ 'fill': '#fff', 'font-size': '14px' });
-
-            chartExists = true;
         }
 
 
@@ -148,8 +145,8 @@ define(['knockout', 'data/data'], function (ko, data) {
 
         this.roleFamily = params.roleFamily;
 
-        setTimeout(() => updateChart(chartValues()), 0);
-        chartValues.subscribe(updateChart);
+        setTimeout(() => updateChart(chartValues(), false), 0);
+        chartValues.subscribe(newData => updateChart(newData, true));
     }
 
 });
