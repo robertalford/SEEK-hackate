@@ -38,7 +38,7 @@ define(['knockout', 'data/data'], function (ko, data) {
 
         this.filterPanel.roleFamilies = ko.computed(() => {
             return uniqueArray(this.mydata().filter(d => 
-                d.CompanyName === globallySetCompany).map(d => d.SubClassification)).sort()
+                d.CompanyName === globallySetCompany).map(d => d.Classification)).sort()
         });
 
         this.filterPanel.location = ko.computed(() => {
@@ -86,6 +86,15 @@ define(['knockout', 'data/data'], function (ko, data) {
             var overAllScore = doAverage(selectedCompanyNameReviews,"OverallRating");
             return  overAllScore;       
             
+        });
+
+        this.recomendWorking = ko.computed(() =>{
+
+        	var selectedCompanyNameReviews = this.mydata().filter(r => r.CompanyName === globallySetCompany);
+        	var recommend = getRecomendWorking(selectedCompanyNameReviews);
+
+        	return recommend;
+
         });
 
 
@@ -137,13 +146,35 @@ define(['knockout', 'data/data'], function (ko, data) {
 
         });
         //console.log(this.averageAllCompanyScore);
+        //GET THE % OF PEOPLE RECOMENDING WORKING THERE
+        function getRecomendWorking(reviewArray){
+        	var recYes = 0;
+        	var recNo = 0;
+        	var totalRec = 0;
+
+        	for(var i = 0; i < reviewArray.length; i++){
+        		var curRev = reviewArray[i];
+        		if(curRev.Recommended === "FALSE"){
+        			recNo += 1;
+        		}else if(curRev.Recommended === "TRUE"){
+        			recYes += 1;
+        		}
+        		totalRec += 1;
+        		
+        	}
+
+        	var recommendWorkingHere = Math.floor((recYes / totalRec) * 100);
+        	
+        	return recommendWorkingHere;
+        } 
+
         function doAverage(objectArray,fieldToCalculate){
         	var curSum = 0;
             for (var i=0; i < objectArray.length; i++){
             	
             	curSum += objectArray[i][fieldToCalculate];
             }
-            return curSum / objectArray.length;
+            return Math.round((curSum / objectArray.length) * 10 ) / 10;
         }
 
     }

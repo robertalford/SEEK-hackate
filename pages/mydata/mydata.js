@@ -30,27 +30,27 @@ define(['knockout', 'data/data'], function (ko, data) {
 
 		this.filterPanel.roleFamilies = ko.computed(() => {
 			return uniqueArray(this.mydata().filter(d => 
-				d.CompanyName === globallySetCompany).map(d => d.SubClassification)).sort()
+				d.CompanyName === globallySetCompany).map(d => d.Classification)).sort()
 		});
 
 		this.filterPanel.roles = ko.computed(() => {
 			return uniqueArray(this.mydata().filter(d => 
 				(d.CompanyName === globallySetCompany) &&
-				(d.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily())).map(d => d.RoleClean)).sort()
+				(d.Classification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily())).map(d => d.SubClassification)).sort()
 		});
 
 		this.filterPanel.location = ko.computed(() => {
 			return uniqueArray(this.mydata().filter(d => 
 				(d.CompanyName === globallySetCompany) &&
-				(d.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily())).map(d => d.Location)).sort()
+				(d.Classification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily())).map(d => d.Location)).sort()
 		});
 
 		this.mydataFiltered = ko.computed(() => {
 			return this.mydata().filter(r =>
 				// (r.CompanyName === this.filterPanel.selectedCompanyName() || !this.filterPanel.selectedCompanyName()) &&
 				(r.CompanyName === globallySetCompany) &&
-				(r.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
-				(r.RoleClean === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
+				(r.Classification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
+				(r.SubClassification === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
 				(r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
 				(r.Gender === this.filterPanel.selectedGender() || !this.filterPanel.selectedGender()) &&
 				r.SalaryAmt >= this.filterPanel.selectedSalaryMin() * 1000 &&
