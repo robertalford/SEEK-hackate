@@ -350,6 +350,14 @@ i {
 	border-radius: 3px;
 }
 
+.fa-male {
+	color: #4590f9;
+}
+
+.fa-female {
+	color: #f971b7;
+}
+
 .filterPanel input {
 	margin-top: 5px;
 	width: 100%;
@@ -586,3 +594,50 @@ li.menulink:hover {
 
 
 	/*RADIAL CHART */
+  @-webkit-keyframes spinner {
+    from { -webkit-transform: rotateY(0deg);    }
+    to   { -webkit-transform: rotateY(-360deg); }
+  }
+
+  /* all other browsers */
+  @keyframes spinner {
+    from {
+      -moz-transform: rotateY(0deg);
+      -ms-transform: rotateY(0deg);
+      transform: rotateY(0deg) scale(1.5);
+    }
+    to {
+      -moz-transform: rotateY(-360deg);
+      -ms-transform: rotateY(-360deg);
+      transform: rotateY(-360deg) scale(1.5);
+    }
+  }
+
+	  .reviewHeading {
+    -webkit-perspective: 1200px;
+    -moz-perspective: 1200px;
+    -ms-perspective: 1200px;
+    perspective: 1200px;
+  }
+
+	.reviewHeading .person {
+		transition: all .2s ease-in-out;
+	}
+
+	.reviewCard:hover .fa-male,.reviewCard:hover .fa-female {
+    -webkit-animation-name: spinner;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 6s;
+
+    animation-name: spinner;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 6s;
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+		transform: scale(1.5);
+  }
