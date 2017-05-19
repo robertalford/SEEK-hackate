@@ -3,21 +3,27 @@
 				<span class="facet" data-bind="text: globallySetCompany"></span>
 				compares for
 				<span class="facet" data-bind="text: filters.find(f=>f.filterField === currentFilter()).description"></span>
+				<!-- ko if: roleFamily -->
 				among people in
-				<span class="facet" data-bind="text: roleFamily() || 'All'"></span>:</h2>
+				<span class="facet" data-bind="text: roleFamily"></span>
+				<!-- /ko -->
+			</h2>
 			
 			<div class="chartmenu">
 				<ul>
 					<!-- ko foreach: filters -->
-					<li><a href="" data-bind="click: () => $parent.currentFilter(filterField), text: description, attr: {class: fieldClass}">Overall rating</a></li>
+					<li><a href="" data-bind="click: () => {$parent.currentFilter(filterField); $parent.showAll(false)}, text: description, attr: {class: fieldClass}">Overall rating</a></li>
 					<!-- /ko -->
 
-					<li><a href="" class="all">All</a></li>
+					<li><a href="" class="all" data-bind="click: () => showAll(true)">All</a></li>
 					<li><a href="" class="explore">Explore</a></li>
 				</ul>
 			</div>
 
-			<div id="wrapper"></div>
+			<div id="wrapper" data-bind="visible: !showAll()"></div>
 
-
+			<div data-bind="visible: showAll()">
+					<!-- Heatmap -->
+				<heatmap />
+			</div>
 		</div>

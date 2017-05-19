@@ -147,6 +147,8 @@ define(['knockout', 'data/data'], function (ko, data) {
 
         setTimeout(() => updateChart(chartValues(), false), 0);
         chartValues.subscribe(newData => updateChart(newData, true));
+
+        this.showAll = ko.observable();
     }
 
 });
