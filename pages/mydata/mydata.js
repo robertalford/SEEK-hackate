@@ -36,7 +36,7 @@ define(['knockout', 'data/data'], function (ko, data) {
 		this.filterPanel.roles = ko.computed(() => {
 			return uniqueArray(this.mydata().filter(d => 
 				(d.CompanyName === globallySetCompany) &&
-				(d.SubClassification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily())).map(d => d.RoleClean)).sort()
+				(d.Classification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily())).map(d => d.SubClassification)).sort()
 		});
 
 		this.filterPanel.location = ko.computed(() => {
@@ -50,7 +50,7 @@ define(['knockout', 'data/data'], function (ko, data) {
 				// (r.CompanyName === this.filterPanel.selectedCompanyName() || !this.filterPanel.selectedCompanyName()) &&
 				(r.CompanyName === globallySetCompany) &&
 				(r.Classification === this.filterPanel.selectedRoleFamily() || !this.filterPanel.selectedRoleFamily()) &&
-				(r.RoleClean === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
+				(r.SubClassification === this.filterPanel.selectedRole() || !this.filterPanel.selectedRole()) &&
 				(r.Location === this.filterPanel.selectedLocation() || !this.filterPanel.selectedLocation()) &&
 				(r.Gender === this.filterPanel.selectedGender() || !this.filterPanel.selectedGender()) &&
 				r.SalaryAmt >= this.filterPanel.selectedSalaryMin() * 1000 &&
