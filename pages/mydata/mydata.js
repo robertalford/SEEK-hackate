@@ -10,7 +10,7 @@ define(['knockout', 'data/data'], function (ko, data) {
 		this.mydata = ko.observable(data.mydata);
 
 		this.tableData = [
-			{rowHeading: '', values: ['You', 'Aus', 'Comp 1','Comp 2', 'Comp 3']},
+			{rowHeading: '', values: ['You', 'All Aus', 'CBA', 'Telstra', 'Bupa']},
 			{rowHeading: 'Overall', values: [4, 3, 4, 2,3]},
 			{rowHeading: 'Career Development', values: [4, 4, 4,2,3]},
 			{rowHeading: 'Worklife Balance', values: [4, 3, 2,2,3]},
