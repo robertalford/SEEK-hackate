@@ -15,7 +15,7 @@ var selectedcompanies =
 		},
 		{
 			"company_name": "AU average",
-			"company_id": 432298
+			"company_id": null
 		},
 		{
 			"company_name": "NAB",
