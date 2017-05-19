@@ -208,7 +208,13 @@ i {
 	color: #ffc600;
 }
 
+.stackVertical {
+	flex-direction: column;
+}
+
 .reviewSubContainer {
+	padding-left: 10px;
+	padding-right: 10px;
 	display: flex;
 	flex-direction: row;
 	margin: 0 -10px;
